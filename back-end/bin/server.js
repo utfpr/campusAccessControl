@@ -5,7 +5,7 @@ const debug = require('debug')('balta:server');
 const express = require('express'); 
   
 // port of app
-const port = normalizePort(process.env.PORT || '3001'); 
+const port = normalizePort(process.env.PORT || '3000'); 
 app.set('port', port); 
   
 // server and route 
