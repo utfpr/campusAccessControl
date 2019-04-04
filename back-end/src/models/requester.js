@@ -27,14 +27,25 @@ const schema = new Schema({
     }, 
     description: { // finality
         type: String, 
-        required: true, 
+        required: true,
         trim: true
     },
- 
+     
+    responsible: { // finality
+        type: String, 
+        required: true,
+        trim: true
+    },  
+
+    state: { // open, forwarded, accept, rejected
+        type: String, 
+        trim: true
+    },
+
     active: { 
         type: Boolean, 
         required: true, 
-        default: false
+        default: true
     }, 
      
     datas: [{ // requisicao pode ser feita para várias datas 
