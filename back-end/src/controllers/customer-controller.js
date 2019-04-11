@@ -5,7 +5,6 @@ const ValidationContract = require('../validators/fluent-validator');
 // repository of customer 
 const repository = require('../repositories/customer-repository'); 
   
-const md5 = require('md5'); 
 
 //post - create
 exports.post = async(req, res, next) => {  
@@ -23,11 +22,10 @@ exports.post = async(req, res, next) => {
         await repository.create({ 
             name: req.body.name, 
             email: req.body.email, 
-            password: md5(req.body.password + global.SALT_KEY)
-        });
-        res.status(201).send({ 
-            message: 'Cliente Cadastrado com sucesso!' 
-        });
+            password: req.body.password, 
+            type: req.body.type 
+        }); 
+        res.render('requester.ejs')
     } catch (e) { 
         res.status(500).send({ 
             message: 'Falha ao processar a requisição'

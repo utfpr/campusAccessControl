@@ -45,7 +45,7 @@ exports.update = async(numero,data) => {
         }
     });
 } 
-exports.delete = async(numero) => { 
+exports.delete = async(id) => { 
     await Requester 
-        .findOneAndRemove(numero);
+        .findOneAndRemove(id);
 }

@@ -13,7 +13,7 @@ const repository = require('../repositories/requester-repository');
 exports.get = async (req, res, next) =>{ 
     try {
         var data = await repository.get(); 
-        res.status(200).send(data);
+        res.render('show.ejs', { data: await repository.get() })
     } catch (e) { 
         res.status(500).send({ 
             message: 'Falha ao processar sua requisição'
@@ -74,7 +74,7 @@ exports.post = async(req, res, next) => {
         return;
     }  
     try{ 
-        await repository.create(req.body);
+        await repository.create(req.body); 
         res.status(201).send({ 
             message: 'Requisição Cadastrada com sucesso!' 
         });

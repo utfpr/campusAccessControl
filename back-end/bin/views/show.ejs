@@ -9,10 +9,9 @@
 <h2>Registros<h2>
     <table border="1">
         <thead>
-            <tr>
-                <td>Nome</td>
-                <td>Horario</td>   
-                <td>Sala</td>  
+            <tr> 
+                <td>Numero da Sala</td>  
+                <td>Horario</td>  
                 <td>Descricao</td> 
                 <td>Responsavel</td> 
                 <td> Estado </td>  
@@ -23,12 +22,11 @@
         <tbody>
         <% data.forEach(function(details) { %>
             <tr>
-                <td><%= details.name %></td> 
+                <td><%= details.numero %></td> 
                 <td><%= details.horario %></td>
-                <td><%= details.sala %></td> 
                 <td><%= details.descricao %></td> 
                 <td><%= details.responsavel %></td> 
-                <td><%= details.estado %></td> 
+                <td><%= details.stado %></td> 
                 <td><%= details.datas %></td>
                 <td><a href="/edit/<%= details._id %>"> Editar </a> - <a href="/delete/<%= details._id %>"> Deletar </a> </td>
             </tr>
