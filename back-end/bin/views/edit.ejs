@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Access Control</title>
+</head>
+<body>
+
+<h2>Editar Registro<h2>
+    <% data.forEach(function(details) { %> 
+        <form action="/edit/<%= details._id %>" method="POST"> 
+            <input type ="text" value="<%= details.name %> " name="name"> 
+            <input type ="text" value="<%= details.sala %> " name="sala"> 
+            <input type ="text" value="<%= details.horario %> " name="horario"> 
+            <input type ="text" value="<%= details.descricao %> " name="descricao">  
+            <input type ="text" value="<%= details.responsavel %> " name="responsavel">  
+            <input type ="text" value="<%= details.estado %> " name="estado">  
+            <input type ="text" value="<%= details.datas %> " name="datas"> 
+            <br /> 
+            <button><a href="/show">Todos</a></button>  
+            <button type="submit">Editar</button>
+        </form>        
+    <% }) %>
+</body>
+</html>
