@@ -117,7 +117,7 @@ exports.put = (req, res, next) => {
 exports.delete = (req, res, next) => {  
     // use function findOneAndRemove of Product  
     // and print mensage with sucess or error  
-    repository.delete(req.body.numero) 
+    repository.delete(req.params.id) 
         .then(x=>{ 
             res.status(200).send({ 
                 message: 'Requisição removido com sucesso!' 

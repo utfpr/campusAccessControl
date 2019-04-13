@@ -6,7 +6,7 @@ const Requester =  mongoose.model('Requester');
 exports.get = async () => {  
     const res = await Requester.find({ 
             active:true  
-        }, 'numero customer horario datas'); 
+        }, 'numero horario description responsible state datas'); 
     return res;    
 } 
 exports.getByHorario = async(horario) => { 

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Access Control</title>
+</head>
+<body>
+
+<h2>Registros de Usuários<h2>
+    <table border="1">
+        <thead>
+            <tr> 
+                <td>Nome</td>  
+                <td>Email</td>  
+                <td>Tipo</td>          
+            </tr>
+        </thead>
+        <tbody>
+        <% data.forEach(function(details) { %>
+            <tr>
+                <td><%= details.name %></td> 
+                <td><%= details.email %></td>
+                <td><%= details.type %></td>  
+            </tr>
+            <% }) %>
+        </tbody>
+        <button><a href="/">Voltar</a></button>
+</body>
+</html>

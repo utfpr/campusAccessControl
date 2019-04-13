@@ -4,7 +4,19 @@
 const ValidationContract = require('../validators/fluent-validator');
 // repository of customer 
 const repository = require('../repositories/customer-repository'); 
-  
+   
+
+// get/customers
+exports.get = async (req, res, next) =>{ 
+    try {
+        var data = await repository.get(); 
+        res.render('customers.ejs', { data: await repository.get() })
+    } catch (e) { 
+        res.status(500).send({ 
+            message: 'Falha ao processar sua requisição'
+        });
+    }    
+};
 
 //post - create
 exports.post = async(req, res, next) => {  
@@ -24,8 +36,8 @@ exports.post = async(req, res, next) => {
             email: req.body.email, 
             password: req.body.password, 
             type: req.body.type 
-        }); 
-        res.render('requester.ejs')
+        });  
+        res.render('customers.ejs')
     } catch (e) { 
         res.status(500).send({ 
             message: 'Falha ao processar a requisição'

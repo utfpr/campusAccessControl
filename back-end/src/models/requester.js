@@ -20,10 +20,9 @@ const schema = new Schema({
     },  
 
     horario: { 
-        type: String, 
-        required: [true, 'O horario de uso da sala é obrigatório (ex: indeterminado)'], 
-        trim: true, 
-        index: true 
+        type: String , 
+        required: true, 
+        trim: 'true' 
     }, 
     description: { // finality
         type: String, 
@@ -39,7 +38,8 @@ const schema = new Schema({
 
     state: { // open, forwarded, accept, rejected
         type: String, 
-        trim: true
+        trim: true, 
+        default: 'Em andamento'
     },
 
     active: { 
@@ -49,7 +49,7 @@ const schema = new Schema({
     }, 
      
     datas: [{ // requisicao pode ser feita para várias datas 
-        type: String, 
+        type: Date, 
         required: true, 
     }],
 }); 
