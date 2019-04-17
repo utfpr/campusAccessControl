@@ -33,7 +33,8 @@ const schema = new Schema({
     responsible: { // finality
         type: String, 
         required: true,
-        trim: true
+        trim: true, 
+        unique: true
     },  
 
     state: { // open, forwarded, accept, rejected

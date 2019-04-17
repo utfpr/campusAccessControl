@@ -2,8 +2,8 @@
 const app = require('../src/app');
 const http = require('http'); 
 const debug = require('debug')('balta:server'); 
-const express = require('express'); 
-  
+const express = require('express');  
+
 // port of app
 const port = normalizePort(process.env.PORT || '3000'); 
 app.set('port', port); 
@@ -19,8 +19,8 @@ var route = router.get('/', (req, res, next) => {
 
     }); 
 }); 
-app.use('/', route);  
- 
+app.use('/', route);   
+
 //listen port  
 
 server.listen(port);  

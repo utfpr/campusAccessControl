@@ -113,14 +113,14 @@ exports.put = (req, res, next) => {
         });  
 }; 
  
-// delete product  
 exports.delete = (req, res, next) => {  
     // use function findOneAndRemove of Product  
-    // and print mensage with sucess or error  
-    repository.delete(req.params.id) 
+    // and print mensage with sucess or error 
+    repository.delete(req.body.id)   
+        res.render('delete-request.ejs')
         .then(x=>{ 
             res.status(200).send({ 
-                message: 'Requisição removido com sucesso!' 
+                message: 'Requisição removido com sucesso!'
             });
         }).catch(e=>{ 
             res.status(400).send({ 
