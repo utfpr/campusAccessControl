@@ -6,11 +6,10 @@ import CreateTodo from "./components/create-todo.component";
 import EditTodo from "./components/edit-todo.component";
 import TodosList from "./components/todos-list.component";
 
-<<<<<<< HEAD
 import CreateUser from "./components/create-user.component";
+import EditUser from "./components/edit-user.component";
+import UsersList from "./components/users-list.component";
 
-=======
->>>>>>> cfe49bd2976d2ae5f63adf7aab0010a17fcc70a0
 import logo from "./logo.png";
 
 class App extends Component {
@@ -31,26 +30,24 @@ class App extends Component {
                 </li>
                 <li className="navbar-item">
                   <Link to="/create" className="nav-link">Criar acesso</Link>
-<<<<<<< HEAD
-                </li> 
-
+                </li>
                 <li className="navbar-item">
-                  <Link to="/createuser" className="nav-link">Criar usuario</Link>
-=======
->>>>>>> cfe49bd2976d2ae5f63adf7aab0010a17fcc70a0
+                  <Link to="/userlist" className="nav-link">Usuários</Link>
+                </li>
+                <li className="navbar-item">
+                  <Link to="/createuser" className="nav-link">Criar usuário</Link>
                 </li>
               </ul>
             </div>
           </nav>
 
           <Route path="/" exact component={TodosList} />
+          <Route path="/userlist" exact component={UsersList} />
           <Route path="/edit/:id" component={EditTodo} />
-<<<<<<< HEAD
+          <Route path="/edituser/:id" component={EditUser} />
           <Route path="/create" component={CreateTodo} /> 
           <Route path="/createuser" component={CreateUser} />
-=======
-          <Route path="/create" component={CreateTodo} />
->>>>>>> cfe49bd2976d2ae5f63adf7aab0010a17fcc70a0
+          
         </div>
       </Router>
     );

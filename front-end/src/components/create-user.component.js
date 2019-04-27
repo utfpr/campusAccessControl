@@ -16,8 +16,7 @@ export default class CreateUser extends Component {
             user_name: '',
             user_email: '',  
             user_password: '',
-            user_type: '',
-            todo_completed: false
+            user_type: ''
         }
     }
 
@@ -69,8 +68,7 @@ export default class CreateUser extends Component {
             user_name: '',
             user_email: '', 
             user_password: '',
-            user_type: '',
-            todo_completed: false
+            user_type: ''
         })
     }
 
