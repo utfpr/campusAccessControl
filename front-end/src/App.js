@@ -6,8 +6,11 @@ import CreateTodo from "./components/create-todo.component";
 import EditTodo from "./components/edit-todo.component";
 import TodosList from "./components/todos-list.component";
 
+<<<<<<< HEAD
 import CreateUser from "./components/create-user.component";
 
+=======
+>>>>>>> cfe49bd2976d2ae5f63adf7aab0010a17fcc70a0
 import logo from "./logo.png";
 
 class App extends Component {
@@ -28,10 +31,13 @@ class App extends Component {
                 </li>
                 <li className="navbar-item">
                   <Link to="/create" className="nav-link">Criar acesso</Link>
+<<<<<<< HEAD
                 </li> 
 
                 <li className="navbar-item">
                   <Link to="/createuser" className="nav-link">Criar usuario</Link>
+=======
+>>>>>>> cfe49bd2976d2ae5f63adf7aab0010a17fcc70a0
                 </li>
               </ul>
             </div>
@@ -39,8 +45,12 @@ class App extends Component {
 
           <Route path="/" exact component={TodosList} />
           <Route path="/edit/:id" component={EditTodo} />
+<<<<<<< HEAD
           <Route path="/create" component={CreateTodo} /> 
           <Route path="/createuser" component={CreateUser} />
+=======
+          <Route path="/create" component={CreateTodo} />
+>>>>>>> cfe49bd2976d2ae5f63adf7aab0010a17fcc70a0
         </div>
       </Router>
     );
