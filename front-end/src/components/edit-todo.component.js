@@ -135,33 +135,33 @@ export default class EditTodo extends Component {
                                     type="radio"
                                     name="priorityOptions"
                                     id="priorityLow"
-                                    value="Low"
-                                    checked={this.state.todo_priority==='Low'}
+                                    value="Aluno"
+                                    checked={this.state.todo_priority==='Aluno'}
                                     onChange={this.onChangeTodoPriority}
                                     />
-                            <label className="form-check-label">Low</label>
+                            <label className="form-check-label">Aluno</label>
                         </div>
                         <div className="form-check form-check-inline">
                             <input  className="form-check-input"
                                     type="radio"
                                     name="priorityOptions"
                                     id="priorityMedium"
-                                    value="Medium"
-                                    checked={this.state.todo_priority==='Medium'}
+                                    value="Professor"
+                                    checked={this.state.todo_priority==='Professor'}
                                     onChange={this.onChangeTodoPriority}
                                     />
-                            <label className="form-check-label">Medium</label>
+                            <label className="form-check-label">Professor</label>
                         </div>
                         <div className="form-check form-check-inline">
                             <input  className="form-check-input"
                                     type="radio"
                                     name="priorityOptions"
                                     id="priorityHigh"
-                                    value="High"
-                                    checked={this.state.todo_priority==='High'}
+                                    value="Servidor"
+                                    checked={this.state.todo_priority==='Servidor'}
                                     onChange={this.onChangeTodoPriority}
                                     />
-                            <label className="form-check-label">High</label>
+                            <label className="form-check-label">Servidor</label>
                         </div>
                         <div className="form-check">
                             <input  type="checkbox"
