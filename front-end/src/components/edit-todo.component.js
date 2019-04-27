@@ -8,11 +8,8 @@ export default class EditTodo extends Component {
 
         this.onChangeTodoDescription = this.onChangeTodoDescription.bind(this);
         this.onChangeTodoResponsible = this.onChangeTodoResponsible.bind(this);
-<<<<<<< HEAD
-=======
         this.onChangeTodoHorario = this.onChangeTodoHorario.bind(this);
         this.onChangeTodoDate = this.onChangeTodoDate.bind(this);
->>>>>>> cfe49bd2976d2ae5f63adf7aab0010a17fcc70a0
         this.onChangeTodoPriority = this.onChangeTodoPriority.bind(this);
         this.onChangeTodoCompleted = this.onChangeTodoCompleted.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
@@ -20,11 +17,8 @@ export default class EditTodo extends Component {
         this.state = {
             todo_description: '',
             todo_responsible: '',
-<<<<<<< HEAD
-=======
             todo_horario: '',
             todo_date: '',
->>>>>>> cfe49bd2976d2ae5f63adf7aab0010a17fcc70a0
             todo_priority: '',
             todo_completed: false
         }
@@ -36,11 +30,8 @@ export default class EditTodo extends Component {
                 this.setState({
                     todo_description: response.data.todo_description,
                     todo_responsible: response.data.todo_responsible,
-<<<<<<< HEAD
-=======
                     todo_horario: response.data.todo_horario,
                     todo_date: response.data,
->>>>>>> cfe49bd2976d2ae5f63adf7aab0010a17fcc70a0
                     todo_priority: response.data.todo_priority,
                     todo_completed: response.data.todo_completed
                 })
@@ -61,9 +52,6 @@ export default class EditTodo extends Component {
             todo_responsible: e.target.value
         });
     }
-
-<<<<<<< HEAD
-=======
     onChangeTodoHorario(e) {
         this.setState({
             todo_horario: e.target.value
@@ -76,7 +64,6 @@ export default class EditTodo extends Component {
         });
     }
 
->>>>>>> cfe49bd2976d2ae5f63adf7aab0010a17fcc70a0
     onChangeTodoPriority(e) {
         this.setState({
             todo_priority: e.target.value
@@ -94,11 +81,8 @@ export default class EditTodo extends Component {
         const obj = {
             todo_description: this.state.todo_description,
             todo_responsible: this.state.todo_responsible,
-<<<<<<< HEAD
-=======
             todo_horario: this.state.todo_horario,
             todo_date: this.state.todo_date,
->>>>>>> cfe49bd2976d2ae5f63adf7aab0010a17fcc70a0
             todo_priority: this.state.todo_priority,
             todo_completed: this.state.todo_completed
         };
@@ -130,8 +114,6 @@ export default class EditTodo extends Component {
                                 />
                     </div>
                     <div className="form-group">
-<<<<<<< HEAD
-=======
                         <label>Horario: </label>
                         <input  type="time"
                                 className="form-control"
@@ -148,7 +130,6 @@ export default class EditTodo extends Component {
                                 />
                     </div>
                     <div className="form-group">
->>>>>>> cfe49bd2976d2ae5f63adf7aab0010a17fcc70a0
                         <div className="form-check form-check-inline">
                             <input  className="form-check-input"
                                     type="radio"
