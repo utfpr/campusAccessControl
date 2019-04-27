@@ -21,11 +21,11 @@ connection.once('open', function() {
 }) 
  
 userRoutes.route('/').get( async function(req, res) {
-    Todo.find(function(err, users) {
+    User.find(function(err, users) {
         if (err) {
             console.log(err);
         } else {
-            res.json(todos);
+            res.json(users);
         }
     });
 });
@@ -34,7 +34,7 @@ userRoutes.route('/').get( async function(req, res) {
 userRoutes.route('/:id').get(async function(req, res) {
     let id = req.params.id;
     Todo.findById(id, function(err, user) {
-        res.json(todo);
+        res.json(user);
     });
 });
  
@@ -42,7 +42,7 @@ userRoutes.route('/:id').get(async function(req, res) {
 userRoutes.route('/add').post(async function(req, res) {
     let user = new User(req.body);
     user.save()
-        .then(todo => {
+        .then(user => {
             res.status(200).json({'user': 'user added successfully'});
         })
         .catch(err => {
@@ -59,6 +59,9 @@ userRoutes.route('/update/:id').post(async function(req, res) {
         else
             user.user_name = req.body.user_name; 
             user.user_email = req.body.user_email;
+            user.user_password = req.body.user_password;
+            user.user_type = req.body.user_type;
+            user.user_completed = req.body.user_completed;
            
             user.save().then(todo => {
                 res.json('User updated');
