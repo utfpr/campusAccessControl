@@ -51,7 +51,7 @@ export default class UsersList extends Component {
         return (
             <div>
                 <h3>Lista de usuários</h3>
-                <table className="table table-striped" style={{ marginTop: 20 }}>
+                <table className="table table-warning table-striped" style={{ marginTop: 20 }}>
                     <thead>
                         <tr>
                             <th>Username</th>
