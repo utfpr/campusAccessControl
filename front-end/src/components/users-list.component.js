@@ -10,6 +10,9 @@ const User = props => (
         <td className={props.user.user_completed ? 'completed' : ''}>{props.user.user_type}</td>
         <td>
             <Link to={"/edituser/"+props.user._id}>Edit</Link>
+        </td> 
+        <td>
+            <Link to={"/delete/"+props.user._id}>Delete</Link> 
         </td>
     </tr>
 )

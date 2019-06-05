@@ -140,7 +140,7 @@ export default class EditUser extends Component {
                         </div>
                     </div>
                     <div className="form-group">
-                        <input type="submit" value="Create User" className="btn btn-primary" />
+                        <input type="submit" value="Update User" className="btn btn-primary" />
                     </div>
                 </form>
             </div>

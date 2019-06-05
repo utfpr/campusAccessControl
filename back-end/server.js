@@ -19,7 +19,9 @@ const connection = mongoose.connection;
 connection.once('open', function() {
     console.log("MongoDB database connection established successfully");
 }) 
- 
+  
+
+// CRUD Users
 userRoutes.route('/').get( async function(req, res) {
     User.find(function(err, users) {
         if (err) {
@@ -33,7 +35,7 @@ userRoutes.route('/').get( async function(req, res) {
 
 userRoutes.route('/:id').get(async function(req, res) {
     let id = req.params.id;
-    Todo.findById(id, function(err, user) {
+    User.findById(id, function(err, user) {
         res.json(user);
     });
 });
@@ -63,7 +65,7 @@ userRoutes.route('/update/:id').post(async function(req, res) {
             user.user_type = req.body.user_type;
             user.user_completed = req.body.user_completed;
            
-            user.save().then(todo => {
+            user.save().then(user => {
                 res.json('User updated');
             })
             .catch(err => {
@@ -73,7 +75,24 @@ userRoutes.route('/update/:id').post(async function(req, res) {
 });
 
 
+userRoutes.route('/delete/:id').delete(async function(req, res) {
+    User.findByIdAndDelete(req.params.id, async function(err, user) {
+        if (!user)
+            res.status(404).send('data is not found');
+        else
+            user.delete().then(user => {
+                res.json('User deleted');
+            })
+            .catch(err => {
+                res.status(400).send("Delete not possible");
+            });
+    });
+});
 
+
+ 
+
+// CRUD Access
 
 todoRoutes.route('/').get( async function(req, res) {
     Todo.find(function(err, todos) {

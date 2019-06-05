@@ -53,14 +53,14 @@ export default class TodosList extends Component {
             <div>
                 <h3>Lista de acessos</h3>
                 <table className="table table-striped" style={{ marginTop: 20 }}>
-                    <thead>
+                <thead class="thead-dark">
                         <tr>
-                            <th>Description</th>
-                            <th>Responsible</th> 
-                            <th>Horario</th> 
-                            <th>Date</th>
-                            <th>Priority</th>
-                            <th>Actions</th>
+                            <th>Descrição</th>
+                            <th>Responsável</th> 
+                            <th>Horário</th> 
+                            <th>Data</th>
+                            <th>Prioridade</th>
+                            <th>Ações</th>
                         </tr>
                     </thead>
                     <tbody>

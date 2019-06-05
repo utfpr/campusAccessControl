@@ -93,7 +93,7 @@ export default class CreateTodo extends Component {
                 <h3>Criar novo acesso</h3>
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group">
-                        <label>Description: </label>
+                        <label>Descrição: </label>
                         <input  type="text"
                                 className="form-control"
                                 value={this.state.todo_description}
@@ -101,7 +101,7 @@ export default class CreateTodo extends Component {
                                 />
                     </div>
                     <div className="form-group">
-                        <label>Responsible: </label>
+                        <label>Responsável: </label>
                         <input  type="text"
                                 className="form-control"
                                 value={this.state.todo_responsible}
@@ -110,7 +110,7 @@ export default class CreateTodo extends Component {
                     </div> 
 
                     <div className="form-group">
-                        <label>Horario: </label>
+                        <label>Horário: </label>
                         <input  type="time"
                                 className="form-control"
                                 value={this.state.todo_horario}
@@ -119,7 +119,7 @@ export default class CreateTodo extends Component {
                     </div> 
 
                     <div className="form-group">
-                        <label>Date: </label>
+                        <label>Data: </label>
                         <input  type="date"
                                 className="form-control"
                                 value={this.state.todo_date}
@@ -162,7 +162,7 @@ export default class CreateTodo extends Component {
                         </div>
                     </div>
                     <div className="form-group">
-                        <input type="submit" value="Create Todo" className="btn btn-primary" />
+                        <input type="submit" value="Criar Acesso" className="btn btn-primary" />
                     </div>
                 </form>
             </div>
