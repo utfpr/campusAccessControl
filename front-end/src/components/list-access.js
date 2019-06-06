@@ -1,43 +1,63 @@
 import React, {Component} from 'react';
 import axios from 'axios'; 
-import { Table } from 'antd';
-
+import { Table ,  Divider, Tag } from 'antd';
+import 'antd/dist/antd.css';
 const columns = [ 
   {
-    title: 'Cpf',
-    dataIndex: 'cpf',
-    key: 'cpf',
+    title: 'Descrição',
+    dataIndex: 'todo_description',
+    key: 'todo_description',
   },
   {
-    title: 'Name',
-    dataIndex: 'name',
-    key: 'name',
-    render: text => <a href="javascript:;">{text}</a>,
+    title: 'Responsável',
+    dataIndex: 'todo_responsible',
+    key: 'todo_responsible'
   },
   {
-    title: 'Email',
-    dataIndex: 'email',
-    key: 'email',
+    title: 'Horario',
+    dataIndex: 'todo_horario',
+    key: 'todo_horario',
   },
+  {
+    title: 'Data',
+    dataIndex: 'todo_date',
+    key: 'todo_date',
+  }, 
+  {
+    title: 'Prioridade',
+    dataIndex: 'todo_priority',
+    key: 'todo_priority',
+  }, 
   
 ];
 
-export default class UsersList extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {simpleusers: []};
-    }
-    componentDidMount() { 
-        axios.get('/simpleusers')
-            .then(response => {
-                this.setState({simpleusers: response.data});
-            })
-            .catch(function (error) {
-                console.log(error);
-            })
-    }
+export default class AcessoLista extends Component {
+  
+constructor(props) {
+  super(props);
+  this.state = {todos: []};
+}
 
+componentDidMount() { 
+  axios.get('http://localhost:4000/todos/')
+      .then(response => {
+          this.setState({todos: response.data});
+      })
+      .catch(function (error) {
+          console.log(error);
+      })
+}
+
+componentDidUpdate() {
+    axios.get('http://localhost:4000/todos/')
+    .then(response => {
+        this.setState({todos: response.data});
+    })
+    .catch(function (error) {
+        console.log(error);
+    })   
+}
     render() {
-        return (<Table columns={columns} dataSource={this.state.simpleusers} />  );   
+        return (<Table columns={columns} dataSource={this.state.todos} />  );   
     } 
 }

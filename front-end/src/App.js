@@ -13,6 +13,9 @@ import CreateUser from "./components/create-user.component";
 import EditUser from "./components/edit-user.component";
 import UsersList from "./components/users-list.component";
 
+import AcessoLista from "./components/list-access";
+ 
+ 
 import logo from "./logo.png";
 
 class App extends Component {
@@ -40,6 +43,10 @@ class App extends Component {
                 <li className="navbar-item">
                   <Link to="/createuser" className="nav-link">Criar usuário</Link>
                 </li>
+
+                <li className="navbar-item">
+                  <Link to="/accesslist" className="nav-link">Lista de acessos</Link>
+                </li>
               </ul>
             </div>
           </nav>
@@ -50,7 +57,9 @@ class App extends Component {
           <Route path="/edit/:id" component={EditTodo} />
           <Route path="/edituser/:id" component={EditUser} />
           <Route path="/create" component={CreateTodo} /> 
-          <Route path="/createuser" component={CreateUser} />
+          <Route path="/createuser" component={CreateUser} /> 
+          <Route path="/accesslist" component={AcessoLista} /> 
+
           
         </div>
       </Router>
