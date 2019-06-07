@@ -10,7 +10,8 @@ export default class CreateTodo extends Component {
         this.onChangeTodoResponsible = this.onChangeTodoResponsible.bind(this); 
         this.onChangeTodoHorario = this.onChangeTodoHorario.bind(this);
         this.onChangeTodoDate = this.onChangeTodoDate.bind(this);
-        this.onChangeTodoPriority = this.onChangeTodoPriority.bind(this);
+        this.onChangeTodoPriority = this.onChangeTodoPriority.bind(this); 
+        this.onChangeTodoRoom = this.onChangeTodoRoom.bind(this); 
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
@@ -18,9 +19,16 @@ export default class CreateTodo extends Component {
             todo_responsible: '',  
             todo_horario: '',
             todo_date: '',
-            todo_priority: '',
+            todo_priority: '', 
+            todo_room: '',  
             todo_completed: false
         }
+    }
+   
+    onChangeTodoRoom(e) {
+        this.setState({
+            todo_room: e.target.value
+        });
     }
 
     onChangeTodoDescription(e) {
@@ -62,15 +70,18 @@ export default class CreateTodo extends Component {
         console.log(`Todo Responsible: ${this.state.todo_responsible}`); 
         console.log(`Todo Horario: ${this.state.todo_horario}`);
         console.log(`Todo Date: ${this.state.todo_date}`);
-        console.log(`Todo Priority: ${this.state.todo_priority}`);
+        console.log(`Todo Priority: ${this.state.todo_priority}`); 
+        console.log(`Todo Room: ${this.state.todo_room}`);
         console.log(`Todo Completed: ${this.state.todo_completed}`);
-
+        
         const newTodo = {
             todo_description: this.state.todo_description,
             todo_responsible: this.state.todo_responsible, 
             todo_horario: this.state.todo_horario,
             todo_date: this.state.todo_date,
-            todo_priority: this.state.todo_priority,
+            todo_priority: this.state.todo_priority, 
+            todo_room: this.state.todo_room,  
+            tags: ["Aceito"],
             todo_completed: this.state.todo_completed
         }
 
@@ -82,7 +93,8 @@ export default class CreateTodo extends Component {
             todo_responsible: '', 
             todo_horario: '',
             todo_date: '',
-            todo_priority: '',
+            todo_priority: '', 
+            todo_room: '',
             todo_completed: false
         })
     }
@@ -117,15 +129,6 @@ export default class CreateTodo extends Component {
                                 onChange={this.onChangeTodoHorario}
                                 />
                     </div> 
-
-                    <div className="form-group">
-                        <label>Data: </label>
-                        <input  type="date"
-                                className="form-control"
-                                value={this.state.todo_date}
-                                onChange={this.onChangeTodoDate}
-                                />
-                    </div>
                     <div className="form-group">
                         <div className="form-check form-check-inline">
                             <input  className="form-check-input"
@@ -160,7 +163,23 @@ export default class CreateTodo extends Component {
                                     />
                             <label className="form-check-label">Servidor</label>
                         </div>
-                    </div>
+                    </div> 
+                    <div className="form-group">
+                        <label>Data: </label>
+                        <input  type="date"
+                                className="form-control"
+                                value={this.state.todo_date}
+                                onChange={this.onChangeTodoDate}
+                                />
+                    </div> 
+                    <div className="form-group">
+                        <label>Sala: </label>
+                        <input  type="text"
+                                className="form-control"
+                                value={this.state.todo_room}
+                                onChange={this.onChangeTodoRoom}
+                                />
+                    </div> 
                     <div className="form-group">
                         <input type="submit" value="Criar Acesso" className="btn btn-primary" />
                     </div>

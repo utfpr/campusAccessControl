@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import axios from 'axios'; 
-import { Table ,  Divider, Tag } from 'antd';
-import 'antd/dist/antd.css';
+import { Table, Tag } from 'antd';
+import 'antd/dist/antd.css'; 
+import { string } from 'prop-types';
+const color = 'volcano'; 
 const columns = [ 
   {
     title: 'Descrição',
@@ -27,21 +29,48 @@ const columns = [
     title: 'Prioridade',
     dataIndex: 'todo_priority',
     key: 'todo_priority',
+  },  
+  {
+    title: 'Sala',
+    dataIndex: 'todo_room',
+    key: 'todo_room',
   }, 
-  
-];
+  {
+    title: 'Status',
+    dataIndex: 'tags',
+    key: 'tags',  
+    render: tags => (
+      <span>
+        {tags.map(tag => {
+          let color = tag.length > 6 ? 'volcano' : 'green';
+          if (tag === 'Em andamento') {
+            color = 'volcano';
+          }
+          return (
+            <Tag color={color} key={tag}>
+              {tag.toUpperCase()}
+            </Tag>
+          );
+        })}
+      </span>
+    ),
+  },  
+]; 
 
 export default class AcessoLista extends Component {
+ 
   
 constructor(props) {
   super(props);
-  this.state = {todos: []};
+  this.state = {todos: []}; 
+ 
 }
 
 componentDidMount() { 
   axios.get('http://localhost:4000/todos/')
       .then(response => {
-          this.setState({todos: response.data});
+          this.setState({todos: response.data}); 
+          console.log(this.state.color)
       })
       .catch(function (error) {
           console.log(error);
