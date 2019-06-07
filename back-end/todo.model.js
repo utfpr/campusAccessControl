@@ -24,8 +24,18 @@ let Todo = new Schema({
 
     },
     todo_completed: {
-        type: Boolean
-    }
+        type: Boolean,   
+        default: false 
+    }, 
+    todo_room:  { 
+        type:String, 
+        required: true
+    }, 
+    tags: [{    
+        type: String,  
+        required: true, 
+        default: 'Em andamento',
+    }],  
 });
 
 module.exports = mongoose.model('Todo', Todo);
