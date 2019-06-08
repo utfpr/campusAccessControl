@@ -42,9 +42,12 @@ const columns = [
     render: tags => (
       <span>
         {tags.map(tag => {
-          let color = tag.length > 6 ? 'volcano' : 'green';
-          if (tag === 'Em andamento') {
+          let color = 'green';
+          if (tag.length === 12 ) {
             color = 'volcano';
+          } 
+          if (tag.length === 9 ) {
+            color = 'black';
           }
           return (
             <Tag color={color} key={tag}>
