@@ -24,17 +24,19 @@ let Todo = new Schema({
 
     },
     todo_completed: {
-        type: Boolean,   
+        type: Boolean,    
         default: false 
     }, 
     todo_room:  { 
         type:String, 
+        trim:true, 
         required: true
     }, 
     tags: [{    
         type: String,  
-        required: true, 
-        default: 'Em andamento',
+        required: true,  
+        trim:true,
+        default: 'Rejeitado',
     }],  
 });
 
