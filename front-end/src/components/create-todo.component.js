@@ -81,7 +81,7 @@ export default class CreateTodo extends Component {
             todo_date: this.state.todo_date,
             todo_priority: this.state.todo_priority, 
             todo_room: this.state.todo_room,  
-            tags: ["Rejeitado"],
+            tags: ["Em andamento"],
             todo_completed: this.state.todo_completed
         }
 
