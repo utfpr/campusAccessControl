@@ -33,8 +33,9 @@ class App extends Component {
               <ul className="navbar-nav mr-auto">
                 <li className="navbar-item">
                   <Link to="/todoslist" className="nav-link">Acessos</Link>
-                </li>
-                <li className="navbar-item">
+                </li> 
+                {/* 
+               <li className="navbar-item">
                   <Link to="/create" className="nav-link">Criar acesso</Link>
                 </li>
                 <li className="navbar-item">
@@ -43,10 +44,9 @@ class App extends Component {
                 <li className="navbar-item">
                   <Link to="/createuser" className="nav-link">Criar usuário</Link>
                 </li>
-
-                <li className="navbar-item">
+               <li className="navbar-item">
                   <Link to="/accesslist" className="nav-link">Lista de acessos</Link>
-                </li>
+                </li> */}
               </ul>
             </div>
           </nav>
