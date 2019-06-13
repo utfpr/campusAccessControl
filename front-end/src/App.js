@@ -13,7 +13,10 @@ import CreateUser from "./components/create-user.component";
 import EditUser from "./components/edit-user.component";
 import UsersList from "./components/users-list.component";
 
-import AcessoLista from "./components/list-access";
+import AcessoLista from "./components/list-access"; 
+
+  
+import MenuUser from "./components/menu-usuario.component";
  
  
 import logo from "./logo.png";
@@ -58,7 +61,9 @@ class App extends Component {
           <Route path="/edituser/:id" component={EditUser} />
           <Route path="/create" component={CreateTodo} /> 
           <Route path="/createuser" component={CreateUser} /> 
-          <Route path="/accesslist" component={AcessoLista} /> 
+          <Route path="/accesslist" component={AcessoLista} />  
+
+          <Route path="/menuuser" component={MenuUser} /> 
 
           
         </div>

@@ -48,7 +48,7 @@ export default class Index extends Component {
             this.state.users.map(user => {  
                 if (user.user_name === this.state.user_name){ 
                     if(user.user_password === this.state.user_password){    
-                        this.props.history.push('/create'); 
+                        this.props.history.push('/menuuser'); 
                         //console.log(this.state.loginaceito)
                         //window.location.replace("http://localhost:3000/create"); 
                     } 
