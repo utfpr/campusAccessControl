@@ -1,7 +1,8 @@
 import React, {Component} from 'react'; 
-import axios from 'axios'; 
+import axios from 'axios';  
+import { BrowserRouter as Router, Route, Link } from "react-router-dom"; 
 
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import CreateTodo from "./create-todo.component";
 export default class Index extends Component {
     constructor(props) {
         super(props);
@@ -43,7 +44,17 @@ export default class Index extends Component {
 
         axios.get('http://localhost:4000/users/')
         .then(response => {
-            this.setState({users: response.data}); 
+            this.setState({users: response.data});  
+            this.state.users.map(user => {  
+                if (user.user_name === this.state.user_name){ 
+                    if(user.user_password === this.state.user_password){    
+                        this.props.history.push('/create'); 
+                        //console.log(this.state.loginaceito)
+                        //window.location.replace("http://localhost:3000/create"); 
+                    } 
+                } 
+            }
+            ) 
         //    console.log(this.state.users)
         })
         .catch(function (error) {
@@ -52,42 +63,24 @@ export default class Index extends Component {
         
         axios.get('http://localhost:4000/admusers/')
         .then(response => {
-            this.setState({adminusers: response.data}); 
-        //    console.log(this.state.users)
+            this.setState({adminusers: response.data});  
+            
+        this.state.adminusers.map(adminuser => {  
+            if (adminuser.user_name === this.state.user_name){ 
+                if(adminuser.user_password === this.state.user_password){   
+                    this.props.history.push('/todoslist');  
+                } 
+            } 
+        } 
+        )          
         })
         .catch(function (error) {
             console.log(error);
         })   
-
-        this.state.users.map(user => {  
-            if (user.user_name === this.state.user_name){ 
-                if(user.user_password === this.state.user_password){   
-                    this.state.loginaceito = true; 
-                    //console.log(this.state.loginaceito)
-                    //window.location.replace("http://localhost:3000/create"); 
-                } 
-            } 
-        }
-        ) 
-        this.state.adminusers.map(adminuser => {  
-            if (adminuser.user_name === this.state.user_name){ 
-                if(adminuser.user_password === this.state.user_password){   
-                    this.state.loginadm = true; 
-                } 
-            } 
-        }
-        )
+       
     } 
 
     render() { 
-        if(this.state.loginaceito === true){ 
-           window.location.replace("http://localhost:3000/create"); 
-          // <Link to = '/create'/>   
-        }   
-        if(this.state.loginadm === true){ 
-            window.location.replace("http://localhost:3000/todoslist"); 
-           // <Link to = '/create'/>   
-         }  
         return (  
             <div style={{marginTop: 20}}>
             <h3>Fazer login</h3>
@@ -107,8 +100,7 @@ export default class Index extends Component {
                             value={this.state.user_password}
                             onChange={this.onChangeUserPassword}
                             />
-                </div> 
-
+                </div>  
                 <div className="form-group">  
                     <input type="submit" value="Entrar" className="btn btn-warning" /> 
                    
