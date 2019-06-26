@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import axios from 'axios';  
 import { BrowserRouter as Router, Route, Link } from "react-router-dom"; 
 
-import CreateTodo from "./create-todo.component";
+import CreateTodo from "./create-todo.component"; 
+// view of login 
 export default class Index extends Component {
     constructor(props) {
         super(props);
@@ -17,7 +18,8 @@ export default class Index extends Component {
             users: [],  
             adminusers: [],
             loginaceito: false, 
-            loginadm: false
+            loginadm: false, 
+            idusuario:''
         }
     } 
     onChangeUserName(e) {
@@ -47,8 +49,9 @@ export default class Index extends Component {
             this.setState({users: response.data});  
             this.state.users.map(user => {  
                 if (user.user_name === this.state.user_name){ 
-                    if(user.user_password === this.state.user_password){    
-                        this.props.history.push('/menuuser'); 
+                    if(user.user_password === this.state.user_password){   
+                       const idusuario = user._id;                       
+                        this.props.history.push('/menuuser/'+idusuario); 
                         //console.log(this.state.loginaceito)
                         //window.location.replace("http://localhost:3000/create"); 
                     } 
