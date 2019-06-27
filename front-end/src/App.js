@@ -15,7 +15,7 @@ import UsersList from "./components/users-list.component";
 
 import AcessoLista from "./components/list-access"; 
 
-  
+import UsuarioAcessoLista from "./components/list-access-byuser";   
 import MenuUser from "./components/menu-usuario.component";
  
  
@@ -62,8 +62,10 @@ class App extends Component {
           <Route path="/create" component={CreateTodo} /> 
           <Route path="/createuser" component={CreateUser} /> 
           <Route path="/accesslist" component={AcessoLista} />  
-
-          <Route path="/menuuser" component={MenuUser} /> 
+ 
+          
+          <Route path="/useraccesslist/:id" component={UsuarioAcessoLista} />         
+          <Route path="/menuuser/:id" component={MenuUser} /> 
 
           
         </div>

@@ -3,9 +3,14 @@ import React, {Component} from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import CreateTodo from "./create-todo.component";
 
-export default class MenuUser extends Component { 
 
-    render() { 
+export default class MenuUser extends Component { 
+ 
+    componentWillMount(){ 
+      console.log(this.props.match.params.id)
+    }
+    render() {  
+        const url = "/useraccesslist/"+this.props.match.params.id;
         return (    
             <div className="container">  
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -13,10 +18,16 @@ export default class MenuUser extends Component {
             <ul className="navbar-nav mr-auto">
                 <li className="navbar-item">
                   <Link to="/create" className="nav-link">Criar accesso</Link>
-                </li>  
-                <li className="navbar-item">
-                  <Link to="/create" className="nav-link">Visualizar meus accessos</Link>
                 </li> 
+                <li className="navbar-item">
+                  <Link to={url} className="nav-link">Listar Acessos</Link>
+                </li> 
+                   
+                {/*
+                <nav>
+                <a href={"http://localhost:3000/useraccesslist/"+this.props.match.params.id}>Listar Acessos do Usuário</a>
+                </nav>  
+                */} 
               </ul>
             </div>
           </nav>
