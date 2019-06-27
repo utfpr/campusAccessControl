@@ -8,7 +8,8 @@ let User = new Schema({
     },
     user_email: {
         type: String, 
-        trim: true
+        trim: true, 
+        unique: true
     }, 
     user_password:{ 
         type: String, 

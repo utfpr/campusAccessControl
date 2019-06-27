@@ -31,7 +31,12 @@ let Todo = new Schema({
         type:String, 
         trim:true, 
         required: true
-    }, 
+    },  
+    todo_userid: { 
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'User', 
+        required: true 
+    },  
     tags: [{    
         type: String,  
         required: true,  
