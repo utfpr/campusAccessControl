@@ -18,7 +18,7 @@ import AcessoLista from "./components/list-access";
 import UsuarioAcessoLista from "./components/list-access-byuser";   
 import MenuUser from "./components/menu-usuario.component";
  
- 
+import EditTodoDirec from "./components/direcedit-access"; 
 import logo from "./logo.png";
 
 class App extends Component {
@@ -57,13 +57,12 @@ class App extends Component {
           <Route path="/" exact component={Index} /> 
           <Route path="/todoslist" exact component={TodosList} />
           <Route path="/userlist" exact component={UsersList} />
-          <Route path="/edit/:id" component={EditTodo} />
+          <Route path="/edit/:id" component={EditTodo} /> 
+          <Route path="/editdirec/:id" component={EditTodoDirec} />
           <Route path="/edituser/:id" component={EditUser} />
           <Route path="/create" component={CreateTodo} /> 
           <Route path="/createuser" component={CreateUser} /> 
           <Route path="/accesslist" component={AcessoLista} />  
- 
-          
           <Route path="/useraccesslist/:id" component={UsuarioAcessoLista} />         
           <Route path="/menuuser/:id" component={MenuUser} /> 
 

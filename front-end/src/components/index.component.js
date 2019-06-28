@@ -16,7 +16,7 @@ export default class Index extends Component {
             user_name: '',
             user_password: '', 
             users: [],  
-            adminusers: [],
+            direcusers: [],
             loginaceito: false, 
             loginadm: false, 
             idusuario:''
@@ -48,7 +48,7 @@ export default class Index extends Component {
         .then(response => {
             this.setState({users: response.data});  
             this.state.users.map(user => {  
-                if (user.user_name === this.state.user_name){ 
+                if (user.user_email === this.state.user_name){ 
                     if(user.user_password === this.state.user_password){   
                        const idusuario = user._id;                       
                         this.props.history.push('/menuuser/'+idusuario); 
@@ -64,13 +64,13 @@ export default class Index extends Component {
             console.log(error);
         })   
         
-        axios.get('http://localhost:4000/admusers/')
+        axios.get('http://localhost:4000/usersdirec/')
         .then(response => {
-            this.setState({adminusers: response.data});  
+            this.setState({direcusers: response.data});  
             
-        this.state.adminusers.map(adminuser => {  
-            if (adminuser.user_name === this.state.user_name){ 
-                if(adminuser.user_password === this.state.user_password){   
+        this.state.direcusers.map(direcuser => {  
+            if (direcuser.user_name === this.state.user_name){ 
+                if(direcuser.user_password === this.state.user_password){   
                     this.props.history.push('/todoslist');  
                 } 
             } 

@@ -1,73 +1,105 @@
 import React, {Component} from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
-
-const Todo = props => (
-    <tr>
-        <td className={props.todo.todo_completed ? 'completed' : ''}>{props.todo.todo_description}</td>
-        <td className={props.todo.todo_completed ? 'completed' : ''}>{props.todo.todo_responsible}</td> 
-        <td className={props.todo.todo_completed ? 'completed' : ''}>{props.todo.todo_horario}</td> 
-        <td className={props.todo.todo_completed ? 'completed' : ''}>{props.todo.todo_date}</td>
-        <td className={props.todo.todo_completed ? 'completed' : ''}>{props.todo.todo_priority}</td>
-        <td>
-            <Link to={"/edit/"+props.todo._id}>Edit</Link>
-        </td>
-    </tr>
-)
+import axios from 'axios'; 
+import { Table, Tag } from 'antd';
+import 'antd/dist/antd.css'; 
+import { string } from 'prop-types';
+const color = 'volcano'; 
+const columns = [ 
+  {
+    title: 'Descrição',
+    dataIndex: 'todo_description',
+    key: 'todo_description',
+  },
+  {
+    title: 'Responsável',
+    dataIndex: 'todo_responsible',
+    key: 'todo_responsible'
+  },
+  {
+    title: 'Horario',
+    dataIndex: 'todo_horario',
+    key: 'todo_horario',
+  },
+  {
+    title: 'Data',
+    dataIndex: 'todo_date',
+    key: 'todo_date',
+  }, 
+  {
+    title: 'Prioridade',
+    dataIndex: 'todo_priority',
+    key: 'todo_priority',
+  },  
+  {
+    title: 'Sala',
+    dataIndex: 'todo_room',
+    key: 'todo_room',
+  }, 
+  {
+    title: 'Status',
+    dataIndex: 'tags',
+    key: 'tags',  
+    render: tags => (
+      <span>
+        {tags.map(tag => {
+          let color = 'green';
+          if (tag.length === 12 ) {
+            color = 'volcano';
+          } 
+          if (tag.length === 9 ) {
+            color = 'black';
+          }
+          return (
+            <Tag color={color} key={tag}>
+              {tag.toUpperCase()}
+            </Tag>
+          );
+        })}
+      </span>
+    ),
+  },  
+  {
+    title: 'Ações',
+    key: 'action',
+    render:  (text, record) => (  
+      <span>  
+        <a href={"http://localhost:3000/editdirec/"+record._id}>Editar Acesso</a>
+      </span> 
+    ), 
+  }, 
+]; 
 
 export default class TodosList extends Component {
+  
+constructor(props) {
+  super(props);
+  this.state = {todos: []}; 
+ 
+}
 
-    constructor(props) {
-        super(props);
-        this.state = {todos: []};
-    }
+componentDidMount() {  
+  console.log(this.props.match.params.id)  
+  axios.get('http://localhost:4000/todos')
+      .then(response => {
+          this.setState({todos: response.data}); 
+          console.log(this.state.color)
+      })
+      .catch(function (error) {
+          console.log(error);
+      }) 
+    console.log(this.state.todos)  
+}
 
-    componentDidMount() {
-        axios.get('http://localhost:4000/todos/')
-            .then(response => {
-                this.setState({todos: response.data});
-            })
-            .catch(function (error) {
-                console.log(error);
-            })
-    }
-
-    componentDidUpdate() {
-        axios.get('http://localhost:4000/todos/')
-        .then(response => {
-            this.setState({todos: response.data});
-        })
-        .catch(function (error) {
-            console.log(error);
-        })   
-    }
-
-    todoList() {
-        return this.state.todos.map(function(currentTodo, i) {
-            return <Todo todo={currentTodo} key={i} />;
-        });
-    }
-
+componentDidUpdate() {
+    axios.get('http://localhost:4000/todos/')
+    .then(response => {
+        this.setState({todos: response.data});
+    })
+    .catch(function (error) {
+        console.log(error);
+    })   
+}
     render() {
-        return (
-            <div>
-                <h3>Lista de acessos</h3>
-                <table className="table table-striped" style={{ marginTop: 20 }}>
-                <thead class="thead-dark">
-                        <tr>
-                            <th>Descrição</th>
-                            <th>Responsável</th> 
-                            <th>Horário</th> 
-                            <th>Data</th>
-                            <th>Prioridade</th>
-                            <th>Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        { this.todoList() }
-                    </tbody>
-                </table>
-            </div>
-        )
-    }
+        return (<Table columns={columns} dataSource={this.state.todos} />  );   
+    } 
 }

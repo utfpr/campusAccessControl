@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 
-export default class EditTodo extends Component {
+export default class EditTodoDirec extends Component {
 
     constructor(props) {
         super(props);
@@ -11,7 +11,7 @@ export default class EditTodo extends Component {
         this.onChangeTodoHorario = this.onChangeTodoHorario.bind(this);
         this.onChangeTodoDate = this.onChangeTodoDate.bind(this);
         this.onChangeTodoPriority = this.onChangeTodoPriority.bind(this); 
-   //     this.onChangeTodoTags = this.onChangeTodoTags.bind(this);
+        this.onChangeTodoTags = this.onChangeTodoTags.bind(this);
         this.onChangeTodoCompleted = this.onChangeTodoCompleted.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
@@ -21,7 +21,7 @@ export default class EditTodo extends Component {
             todo_horario: '',
             todo_date: '',
             todo_priority: '', 
-         // todo_tags: [],
+            todo_tags: [],
             todo_completed: false
         }
     }
@@ -35,7 +35,7 @@ export default class EditTodo extends Component {
                     todo_horario: response.data.todo_horario,
                     todo_date: response.data,
                     todo_priority: response.data.todo_priority, 
-            //        todo_tags: response.data.tags, 
+                    todo_tags: response.data.tags, 
                     todo_completed: response.data.todo_completed
                 })
             })
@@ -44,13 +44,11 @@ export default class EditTodo extends Component {
             })
     }
  
-/*
     onChangeTodoTags(e) {
         this.setState({
             todo_tags: e.target.value
         });
     } 
-*/
     onChangeTodoDescription(e) {
         this.setState({
             todo_description: e.target.value
@@ -94,7 +92,7 @@ export default class EditTodo extends Component {
             todo_horario: this.state.todo_horario,
             todo_date: this.state.todo_date,
             todo_priority: this.state.todo_priority, 
-     //       todo_tags: this.state.todo_tags,
+            todo_tags: this.state.todo_tags,
             todo_completed: this.state.todo_completed
         };
         axios.post('http://localhost:4000/todos/update/'+this.props.match.params.id, obj)
@@ -140,16 +138,16 @@ export default class EditTodo extends Component {
                                 onChange={this.onChangeTodoDate}
                                 />
                     </div>  
-                    {/*
+                   
                     <div className="form-group">
-                        <label>Tags: </label>
+                        <label>Estado: </label>
                         <input  type="text"
                                 className="form-control"
                                 value={this.state.todo_tags}
                                 onChange={this.onChangeTodoTags}
                                 />
                     </div> 
-                    */}
+                   
                     <div className="form-group">
                         <div className="form-check form-check-inline">
                             <input  className="form-check-input"
@@ -201,7 +199,7 @@ export default class EditTodo extends Component {
                         */}
                         <br/>
                         <div className="form-group">
-                            <input type="submit" value="Update Todo" className="btn btn-primary" />
+                            <input type="submit" value="Editar Acesso" className="btn btn-primary" />
                         </div>
                     </div>
                 </form>
