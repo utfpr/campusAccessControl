@@ -36,7 +36,8 @@ let Todo = new Schema({
         type: mongoose.Schema.Types.ObjectId, 
         ref: 'User', 
         required: true 
-    },  
+    },   
+    
     tags: [{    
         type: String,  
         required: true,  

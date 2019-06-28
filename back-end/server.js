@@ -5,12 +5,12 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const todoRoutes = express.Router(); 
 const userRoutes = express.Router(); 
-const adminuserRoutes = express.Router();
+const direcuserRoutes = express.Router();
 const PORT = 4000;
 
 let Todo = require('./todo.model');
 let User = require('./user.model');
-let AdminUser = require('./adminuser.model'); 
+let DirecUser = require('./direcuser.model'); 
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -140,7 +140,8 @@ todoRoutes.route('/update/:id').post(async function(req, res) {
             todo.todo_responsible = req.body.todo_responsible; 
             todo.todo_horario = req.body.todo_horario; 
             todo.todo_date = req.body.todo_date;
-            todo.todo_priority = req.body.todo_priority;
+            todo.todo_priority = req.body.todo_priority; 
+            todo.tags = req.body.todo_tags;
             todo.todo_completed = req.body.todo_completed;
 
             todo.save().then(todo => {
@@ -155,19 +156,19 @@ todoRoutes.route('/update/:id').post(async function(req, res) {
 
 // Admin User Routes
 
-adminuserRoutes.route('/add').post(async function(req, res) {
-    let adminuser = new AdminUser(req.body);
-    adminuser.save()
-        .then(adminuser => {
-            res.status(200).json({'adminuser': 'admuser added successfully'});
+direcuserRoutes.route('/add').post(async function(req, res) {
+    let direcuser = new DirecUser(req.body);
+    direcuser.save()
+        .then(direcuser => {
+            res.status(200).json({'direcuser': 'admuser added successfully'});
         })
         .catch(err => {
             res.status(400).send('adding new user failed');
         });
 }); 
 
-adminuserRoutes.route('/').get( async function(req, res) {
-    AdminUser.find(function(err, users) {
+direcuserRoutes.route('/').get( async function(req, res) {
+    DirecUser.find(function(err, users) {
         if (err) {
             console.log(err);
         } else {
@@ -179,7 +180,7 @@ adminuserRoutes.route('/').get( async function(req, res) {
 
 app.use('/todos', todoRoutes);
 app.use('/users', userRoutes); 
-app.use('/admusers', adminuserRoutes); 
+app.use('/usersdirec', direcuserRoutes); 
 
 app.listen(PORT, async function() {
     console.log("Server is running on Port: " + PORT);
