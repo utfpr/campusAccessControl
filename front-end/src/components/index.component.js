@@ -44,20 +44,22 @@ export default class Index extends Component {
             user_password: this.state.user_password
         }    
 
-        axios.get('http://localhost:4000/users/')
+        axios.get('http://localhost:4000/users/getuser/'+this.state.user_name)
         .then(response => {
             this.setState({users: response.data});  
+            console.log(this.state.users); 
             this.state.users.map(user => {  
                 if (user.user_email === this.state.user_name){ 
                     if(user.user_password === this.state.user_password){   
                        const idusuario = user._id;                       
-                        this.props.history.push('/menuuser/'+idusuario); 
+                        this.props.history.push('/menuuser/'+idusuario);  
+                        alert("Ola "+user.user_name);
                         //console.log(this.state.loginaceito)
                         //window.location.replace("http://localhost:3000/create"); 
                     } 
                 } 
             }
-            ) 
+            )  
         //    console.log(this.state.users)
         })
         .catch(function (error) {
@@ -71,7 +73,9 @@ export default class Index extends Component {
         this.state.direcusers.map(direcuser => {  
             if (direcuser.user_name === this.state.user_name){ 
                 if(direcuser.user_password === this.state.user_password){   
-                    this.props.history.push('/todoslist');  
+                    this.props.history.push('/todoslist'); 
+                    alert("Seja bem vindo");  
+                      
                 } 
             } 
         } 

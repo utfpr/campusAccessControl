@@ -19,7 +19,8 @@ export default class EditTodo extends Component {
             todo_description: '',
             todo_responsible: '',
             todo_horario: '',
-            todo_date: '',
+            todo_date: '', 
+            todo_userid:'',
             todo_priority: '', 
          // todo_tags: [],
             todo_completed: false
@@ -34,7 +35,8 @@ export default class EditTodo extends Component {
                     todo_responsible: response.data.todo_responsible,
                     todo_horario: response.data.todo_horario,
                     todo_date: response.data,
-                    todo_priority: response.data.todo_priority, 
+                    todo_priority: response.data.todo_priority,  
+                    todo_userid: response.data.todo_userid,
             //        todo_tags: response.data.tags, 
                     todo_completed: response.data.todo_completed
                 })
@@ -97,16 +99,16 @@ export default class EditTodo extends Component {
      //       todo_tags: this.state.todo_tags,
             todo_completed: this.state.todo_completed
         };
-        axios.post('http://localhost:4000/todos/update/'+this.props.match.params.id, obj)
+        axios.put('http://localhost:4000/todos/update/'+this.props.match.params.id, obj)
             .then(res => console.log(res.data));
 
-        this.props.history.push('/');
+        this.props.history.push('/useraccesslist/'+this.state.todo_userid);
     }
 
     render() {
         return (
             <div>
-                <h3>Update Todo</h3>
+                <h3>Editar Acesso</h3>
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group">
                         <label>Description: </label>
@@ -201,7 +203,7 @@ export default class EditTodo extends Component {
                         */}
                         <br/>
                         <div className="form-group">
-                            <input type="submit" value="Update Todo" className="btn btn-primary" />
+                            <input type="submit" value="Editar Acesso" className="btn btn-primary" />
                         </div>
                     </div>
                 </form>
