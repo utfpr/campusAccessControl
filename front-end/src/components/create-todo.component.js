@@ -24,7 +24,7 @@ export default class CreateTodo extends Component {
             todo_priority: '', 
             todo_room: '', 
             todo_useremail:'', 
-            todo_userid:'', 
+            todo_userid:this.props.match.params.id, 
             users: [],  
             todo_completed: false
         }
@@ -81,24 +81,10 @@ export default class CreateTodo extends Component {
 
     onSubmit(e) {
         e.preventDefault();
-
-    axios.get('http://localhost:4000/users')
-    .then(response => {
-        this.setState({users: response.data});  
-        this.state.users.map(user => {  
-            if (user.user_email === this.state.todo_useremail){ 
-                this.setState({ 
-                    todo_userid : user._id
-                }) 
-                console.log(this.state.todo_userid) 
-            } 
-        }
-        ) 
-    })
-    .catch(function (error) {
-        console.log(error);
-    }) 
-
+        this.setState({ 
+            todo_userid : this.props.match.params.id
+        }) 
+                
     console.log(`Form submitted:`);
     console.log(`Todo Description: ${this.state.todo_description}`);
     console.log(`Todo Responsible: ${this.state.todo_responsible}`); 
@@ -118,7 +104,7 @@ export default class CreateTodo extends Component {
             todo_date: this.state.todo_date,
             todo_priority: this.state.todo_priority, 
             todo_room: this.state.todo_room,  
-            todo_userid: this.state.todo_userid, 
+            todo_userid: this.props.match.params.id, 
             tags: ["Em andamento"],
             todo_completed: this.state.todo_completed
         }
@@ -159,14 +145,6 @@ export default class CreateTodo extends Component {
                                 onChange={this.onChangeTodoResponsible}
                                 />
                     </div>  
-                    <div className="form-group">
-                        <label>Email do usuário: </label>
-                        <input  type="text"
-                                className="form-control"
-                                value={this.state.todo_useremail}
-                                onChange={this.onChangeTodoUseremail}
-                                />
-                    </div>
                     <div className="form-group">
                         <label>Horário: </label>
                         <input  type="time"

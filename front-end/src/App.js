@@ -60,7 +60,7 @@ class App extends Component {
           <Route path="/edit/:id" component={EditTodo} /> 
           <Route path="/editdirec/:id" component={EditTodoDirec} />
           <Route path="/edituser/:id" component={EditUser} />
-          <Route path="/create" component={CreateTodo} /> 
+          <Route path="/create/:id" component={CreateTodo} /> 
           <Route path="/createuser" component={CreateUser} /> 
           <Route path="/accesslist" component={AcessoLista} />  
           <Route path="/useraccesslist/:id" component={UsuarioAcessoLista} />         

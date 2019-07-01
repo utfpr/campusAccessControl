@@ -10,14 +10,15 @@ export default class MenuUser extends Component {
       console.log(this.props.match.params.id)
     }
     render() {  
-        const url = "/useraccesslist/"+this.props.match.params.id;
+        const url = "/useraccesslist/"+this.props.match.params.id; 
+        const urlcriaracesso = "/create/"+this.props.match.params.id;
         return (    
             <div className="container">  
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <div className="collpase nav-collapse">
             <ul className="navbar-nav mr-auto">
                 <li className="navbar-item">
-                  <Link to="/create" className="nav-link">Criar accesso</Link>
+                  <Link to={urlcriaracesso} className="nav-link">Criar accesso</Link>
                 </li> 
                 <li className="navbar-item">
                   <Link to={url} className="nav-link">Listar Acessos</Link>
