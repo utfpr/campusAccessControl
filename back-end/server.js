@@ -41,7 +41,14 @@ userRoutes.route('/:id').get(async function(req, res) {
         res.json(user);
     });
 });
- 
+  
+
+userRoutes.route('/getuser/:email').get(async function(req, res) {
+    let emailuser = req.params.email;
+    User.find({user_email:emailuser}, function(err, todo) {
+        res.json(todo);
+    });
+});
 
 userRoutes.route('/add').post(async function(req, res) {
     let user = new User(req.body);
@@ -131,7 +138,7 @@ todoRoutes.route('/add').post(async function(req, res) {
         });
 });
 
-todoRoutes.route('/update/:id').post(async function(req, res) {
+todoRoutes.route('/update/:id').put(async function(req, res) {
     Todo.findById(req.params.id, async function(err, todo) {
         if (!todo)
             res.status(404).send('data is not found');
@@ -141,7 +148,6 @@ todoRoutes.route('/update/:id').post(async function(req, res) {
             todo.todo_horario = req.body.todo_horario; 
             todo.todo_date = req.body.todo_date;
             todo.todo_priority = req.body.todo_priority; 
-            todo.tags = req.body.todo_tags;
             todo.todo_completed = req.body.todo_completed;
 
             todo.save().then(todo => {
@@ -152,7 +158,22 @@ todoRoutes.route('/update/:id').post(async function(req, res) {
             });
     });
 });
-  
+   
+
+todoRoutes.route('/updatedirec/:id').put(async function(req, res) {
+    Todo.findById(req.params.id, async function(err, todo) {
+        if (!todo)
+            res.status(404).send('data is not found');
+        else 
+            todo.tags = req.body.todo_tags;
+            todo.save().then(todo => {
+                res.json('Todo updated');
+            })
+            .catch(err => {
+                res.status(400).send("Update not possible");
+            });
+    });
+});
 
 // Admin User Routes
 
