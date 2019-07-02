@@ -42,12 +42,12 @@ const columns = [
     render: tags => (
       <span>
         {tags.map(tag => {
-          let color = 'green';
-          if (tag.length === 12 ) {
-            color = 'volcano';
-          } 
-          if (tag.length === 9 ) {
+          let color = 'volcano';
+          if (!tag.localeCompare("rejeitado")) {
             color = 'black';
+          }
+          if (!tag.localeCompare("aceito")) {
+            color = 'green';
           }
           return (
             <Tag color={color} key={tag}>
