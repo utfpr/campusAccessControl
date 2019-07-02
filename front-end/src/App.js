@@ -18,7 +18,8 @@ import AcessoLista from "./components/list-access";
 import UsuarioAcessoLista from "./components/list-access-byuser";   
 import MenuUser from "./components/menu-usuario.component";
  
-import EditTodoDirec from "./components/direcedit-access"; 
+import EditTodoDirec from "./components/direcedit-access";  
+import ListaPorteiro from "./components/lista-acessos-porteiro";
 import logo from "./logo.png";
 
 class App extends Component {
@@ -32,11 +33,12 @@ class App extends Component {
               <img src={logo} width="300" height="100" alt="CampusAccessControlHome" />
             </a>
             <div className="collpase nav-collapse">
-              <ul className="navbar-nav mr-auto">
+              <ul className="navbar-nav mr-auto"> 
+              {/* 
                 <li className="navbar-item">
                   <Link to="/todoslist" className="nav-link">Acessos</Link>
                 </li> 
-                {/* 
+                
                <li className="navbar-item">
                   <Link to="/create" className="nav-link">Criar acesso</Link>
                 </li>
@@ -64,7 +66,8 @@ class App extends Component {
           <Route path="/accesslist" component={AcessoLista} />  
           <Route path="/useraccesslist/:id" component={UsuarioAcessoLista} />         
           <Route path="/menuuser/:id" component={MenuUser} /> 
-
+          <Route path="/listaportaria" component={ListaPorteiro} /> 
+      
           
         </div>
       </Router>
