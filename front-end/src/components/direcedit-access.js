@@ -51,12 +51,30 @@ export default class EditTodoDirec extends Component {
                 <form onSubmit={this.onSubmit}>
        
                     <div className="form-group">
-                        <label>Estado: </label>
-                        <input  type="text"
-                                className="form-control"
-                                value={this.state.todo_tags}
-                                onChange={this.onChangeTodoTags}
-                                />
+                        <div className="form-check form-check-inline">
+                            <div>
+                                <input  className="form-check-input"
+                                            type="radio"
+                                            name="AcceptReject"
+                                            id="Accept"
+                                            value="aceito"
+                                            checked={this.state.todo_tags==='aceito'}
+                                            onChange={this.onChangeTodoTags}
+                                            />
+                                <label className="form-check-label">Aceitar</label>
+                            </div>
+                            <div>
+                                <input  className="form-check-input"
+                                            type="radio"
+                                            name="AcceptReject"
+                                            id="Reject"
+                                            value="rejeitado"
+                                            checked={this.state.todo_tags==='rejeitado'}
+                                            onChange={this.onChangeTodoTags}
+                                            />
+                                <label className="form-check-label">Rejeitar</label>
+                            </div>
+                        </div>
                     </div> 
                      
                    

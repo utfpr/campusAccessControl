@@ -28,10 +28,9 @@ class App extends Component {
         <div className="container">
           
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <a className="navbar-brand" href="https://codingthesmartway.com">
-              <img src={logo} width="300" height="100" alt="CodingTheSmartWay.com" />
+            <a className="navbar-brand" href="/">
+              <img src={logo} width="300" height="100" alt="CampusAccessControlHome" />
             </a>
-            <Link to="/" className="navbar-brand">Campus Access Control</Link>
             <div className="collpase nav-collapse">
               <ul className="navbar-nav mr-auto">
                 <li className="navbar-item">
