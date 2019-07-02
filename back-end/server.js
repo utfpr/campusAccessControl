@@ -120,12 +120,20 @@ todoRoutes.route('/:id').get(async function(req, res) {
     });
 });
  
+todoRoutes.route('/filtro/:tag').get(async function(req, res) {
+    let tag = req.params.tag;
+    Todo.find({tags:tag}, function(err, todo) {
+        res.json(todo);
+    });
+}); 
+
 todoRoutes.route('/user/:id').get(async function(req, res) {
     let iduser = req.params.id;
     Todo.find({todo_userid:iduser}, function(err, todo) {
         res.json(todo);
     });
 });
+ 
 
 todoRoutes.route('/add').post(async function(req, res) {
     let todo = new Todo(req.body);
