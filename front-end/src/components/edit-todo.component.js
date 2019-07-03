@@ -96,9 +96,10 @@ export default class EditTodo extends Component {
             todo_horario: this.state.todo_horario,
             todo_date: this.state.todo_date,
             todo_priority: this.state.todo_priority, 
-     //       todo_tags: this.state.todo_tags,
+            todo_tags: 'Em andamento',
             todo_completed: this.state.todo_completed
-        };
+        }; 
+
         axios.put('http://localhost:4000/todos/update/'+this.props.match.params.id, obj)
             .then(res => console.log(res.data));
 

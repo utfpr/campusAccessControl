@@ -121,7 +121,10 @@ export default class CreateTodo extends Component {
             todo_room: '', 
             todo_userid:'',
             todo_completed: false
-        })
+        }) 
+        //        const url = "/useraccesslist/"+this.props.match.params.id;
+        this.props.history.push('/useraccesslist/'+this.props.match.params.id); 
+ 
     }
 
     render() {
