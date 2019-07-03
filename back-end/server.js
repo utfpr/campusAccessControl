@@ -155,7 +155,8 @@ todoRoutes.route('/update/:id').put(async function(req, res) {
             todo.todo_responsible = req.body.todo_responsible; 
             todo.todo_horario = req.body.todo_horario; 
             todo.todo_date = req.body.todo_date;
-            todo.todo_priority = req.body.todo_priority; 
+            todo.todo_priority = req.body.todo_priority;  
+            todo.tags = req.body.todo_tags;
             todo.todo_completed = req.body.todo_completed;
 
             todo.save().then(todo => {
