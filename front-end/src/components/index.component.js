@@ -1,8 +1,11 @@
 import React, {Component} from 'react'; 
 import axios from 'axios';  
 import { BrowserRouter as Router, Route, Link } from "react-router-dom"; 
+import { login, getUserId } from './services/auth';
 
-import CreateTodo from "./create-todo.component"; 
+const jwt = require('jsonwebtoken');
+
+//import CreateTodo from "./create-todo.component"; 
 // view of login 
 export default class Index extends Component {
     constructor(props) {
@@ -50,8 +53,10 @@ export default class Index extends Component {
             console.log(this.state.users); 
             this.state.users.map(user => {  
                 if (user.user_email === this.state.user_name){ 
-                    if(user.user_password === this.state.user_password){   
-                       const idusuario = user._id;                       
+                    if(user.user_password === this.state.user_password){    
+                        var token = jwt.sign({ id: user._id }, 'secret', { expiresIn: 14400 });
+                        login(token, 0, user._id);
+                        const idusuario = getUserId();                       
                         this.props.history.push('/menuuser/'+idusuario);  
                         alert("Ola "+user.user_name);
                         //console.log(this.state.loginaceito)

@@ -2,13 +2,12 @@ import { Divider, Typography, Layout, Form, Row, Col, Icon, Input, Button, Toolt
 import React, {Component} from 'react';
 import ReactDOM from "react-dom";
 // import "antd/dist/antd.css";
-import "./create-adminuser.css";
+import "./css-criar-acesso.css";
 import axios from 'axios';
 import { string } from 'prop-types';
 
 const { Title } = Typography;
 const { Content } = Layout;
-
 // Return the errors in hte fields
 function hasErrors(fieldsError) {
   return Object.keys(fieldsError).some(field => fieldsError[field]);

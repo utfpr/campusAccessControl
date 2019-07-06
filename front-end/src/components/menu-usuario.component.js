@@ -2,7 +2,7 @@ import React, {Component} from 'react';
  
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import CreateTodo from "./create-todo.component";
-
+import { getUserId} from './services/auth';
 
 export default class MenuUser extends Component { 
  
@@ -10,8 +10,8 @@ export default class MenuUser extends Component {
       console.log(this.props.match.params.id)
     }
     render() {  
-        const url = "/useraccesslist/"+this.props.match.params.id; 
-        const urlcriaracesso = "/criaracesso/"+this.props.match.params.id;
+        const url = "/useraccesslist/"+getUserId(); 
+        const urlcriaracesso = "/criaracesso/"+getUserId();
         return (    
             <div className="container">  
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
