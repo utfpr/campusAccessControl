@@ -37,12 +37,15 @@ let Todo = new Schema({
         ref: 'User', 
         required: true 
     },   
-    
+    justificativa:{ 
+        type:String, 
+        trim:true,         
+    },
     tags: [{    
         type: String,  
         required: true,  
         trim:true,
-        default: 'Rejeitado',
+        default: 'Solicitado',
     }],  
 });
 

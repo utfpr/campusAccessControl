@@ -174,7 +174,8 @@ todoRoutes.route('/updatedirec/:id').put(async function(req, res) {
         if (!todo)
             res.status(404).send('data is not found');
         else 
-            todo.tags = req.body.todo_tags;
+            todo.tags = req.body.todo_tags; 
+            todo.justificativa = req.body.justificativa;
             todo.save().then(todo => {
                 res.json('Todo updated');
             })
