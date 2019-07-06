@@ -35,7 +35,7 @@ let Todo = new Schema({
     todo_userid: { 
         type: mongoose.Schema.Types.ObjectId, 
         ref: 'User', 
-        required: true 
+        //required: true 
     },   
     justificativa:{ 
         type:String, 
