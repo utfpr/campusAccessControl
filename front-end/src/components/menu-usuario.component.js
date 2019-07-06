@@ -11,7 +11,7 @@ export default class MenuUser extends Component {
     }
     render() {  
         const url = "/useraccesslist/"+this.props.match.params.id; 
-        const urlcriaracesso = "/create/"+this.props.match.params.id;
+        const urlcriaracesso = "/criaracesso/"+this.props.match.params.id;
         return (    
             <div className="container">  
             <nav className="navbar navbar-expand-lg navbar-light bg-light">

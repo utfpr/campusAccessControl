@@ -74,7 +74,8 @@ class CriarAcesso extends React.Component {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        values.tags = ['Solicitado'] ;
+        values.tags = ['Solicitado'] ; 
+        values.todo_userid = this.props.match.params.id;
         console.log('Received values of form: ', values); 
         axios.post('http://localhost:4000/todos/add', values)
             .then(res => console.log(res.data));

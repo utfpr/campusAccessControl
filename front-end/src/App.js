@@ -68,7 +68,7 @@ class App extends Component {
           <Route path="/useraccesslist/:id" component={UsuarioAcessoLista} />         
           <Route path="/menuuser/:id" component={MenuUser} /> 
           <Route path="/listaportaria" component={ListaPorteiro} /> 
-          <Route path="/criaracesso" component={CriarAcesso} /> 
+          <Route path="/criaracesso/:id" component={CriarAcesso} /> 
             
           
         </div>
