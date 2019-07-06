@@ -6,11 +6,14 @@ export default class EditTodoDirec extends Component {
     constructor(props) {
         super(props); 
 
-        this.onChangeTodoTags = this.onChangeTodoTags.bind(this);
+        this.onChangeTodoTags = this.onChangeTodoTags.bind(this); 
+        this.onChangeTodoJustificativa = this.onChangeTodoJustificativa.bind(this);
+        
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
-            todo_tags: []
+            todo_tags: [], 
+            justificativa:'',
         }
     }
 
@@ -30,13 +33,19 @@ export default class EditTodoDirec extends Component {
         this.setState({
             todo_tags: e.target.value
         });
+    }
+    onChangeTodoJustificativa(e) {
+        this.setState({
+            justificativa: e.target.value
+        });
     } 
 
 
     onSubmit(e) {
         e.preventDefault();
         const obj = {
-            todo_tags: this.state.todo_tags
+            todo_tags: this.state.todo_tags, 
+            justificativa: this.state.justificativa
         };
         axios.put('http://localhost:4000/todos/updatedirec/'+this.props.match.params.id, obj)
             .then(res => console.log(res.data));
@@ -76,8 +85,14 @@ export default class EditTodoDirec extends Component {
                             </div>
                         </div>
                     </div> 
-                     
-                   
+                    <div className="form-group">
+                    <label>Justificativa: </label>
+                    <input  type="text"
+                            className="form-control"
+                            value={this.state.justificativa}
+                            onChange={this.onChangeTodoJustificativa}
+                            />
+                    </div>
                     <div className="form-group"> 
                         <br/>
                         <div className="form-group">

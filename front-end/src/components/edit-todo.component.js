@@ -96,7 +96,7 @@ export default class EditTodo extends Component {
             todo_horario: this.state.todo_horario,
             todo_date: this.state.todo_date,
             todo_priority: this.state.todo_priority, 
-            todo_tags: 'Em andamento',
+            todo_tags: 'Solicitado',
             todo_completed: this.state.todo_completed
         }; 
 

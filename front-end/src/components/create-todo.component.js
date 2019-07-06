@@ -105,7 +105,7 @@ export default class CreateTodo extends Component {
             todo_priority: this.state.todo_priority, 
             todo_room: this.state.todo_room,  
             todo_userid: this.props.match.params.id, 
-            tags: ["Em andamento"],
+            tags: ["Solicitado"],
             todo_completed: this.state.todo_completed
         }
 

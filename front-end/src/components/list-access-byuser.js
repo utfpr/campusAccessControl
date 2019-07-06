@@ -34,7 +34,12 @@ const columns = [
     title: 'Sala',
     dataIndex: 'todo_room',
     key: 'todo_room',
-  }, 
+  },  
+  {
+    title: 'Justificativa',
+    dataIndex: 'justificativa',
+    key: 'justificativa',
+  },  
   {
     title: 'Status',
     dataIndex: 'tags',
