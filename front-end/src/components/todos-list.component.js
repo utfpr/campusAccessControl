@@ -31,11 +31,6 @@ const columns = [
     key: 'todo_priority',
   },  
   {
-    title: 'Justificativa',
-    dataIndex: 'justificativa',
-    key: 'justificativa',
-  },  
-  {
     title: 'Sala',
     dataIndex: 'todo_room',
     key: 'todo_room',

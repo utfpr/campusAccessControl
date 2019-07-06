@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
   
 import Index from "./components/index.component";
 
+import CriarAcesso from "./components/criar-acesso";
  
 import CreateTodo from "./components/create-todo.component";
 import EditTodo from "./components/edit-todo.component";
@@ -67,7 +68,8 @@ class App extends Component {
           <Route path="/useraccesslist/:id" component={UsuarioAcessoLista} />         
           <Route path="/menuuser/:id" component={MenuUser} /> 
           <Route path="/listaportaria" component={ListaPorteiro} /> 
-      
+          <Route path="/criaracesso" component={CriarAcesso} /> 
+            
           
         </div>
       </Router>
