@@ -4,7 +4,10 @@ import ReactDOM from "react-dom";
 // import "antd/dist/antd.css";
 import "./css-criar-acesso.css";
 import axios from 'axios';
-import { string } from 'prop-types';
+import { string } from 'prop-types'; 
+import { getUserId } from './services/auth';
+
+import NavBar from './navbar/navbar';
 
 const { Title } = Typography;
 const { Content } = Layout;
@@ -74,7 +77,7 @@ class CriarAcesso extends React.Component {
     this.props.form.validateFields((err, values) => {
       if (!err) {
         values.tags = ['Solicitado'] ; 
-        values.todo_userid = this.props.match.params.id;
+        values.todo_userid = getUserId();
         console.log('Received values of form: ', values); 
         axios.post('http://localhost:4000/todos/add', values)
             .then(res => console.log(res.data));
@@ -113,9 +116,9 @@ class CriarAcesso extends React.Component {
     const roomError = isFieldTouched('todo_room') && getFieldError('todo_room');
     const horarioError = isFieldTouched('todo_horario') && getFieldError('todo_horario');
 
-    return (
+    return ( 
       <Layout style = {{ minHeight: '100vh', width: '100%' }}>
-        {/** <NavBar />*/} 
+         <NavBar /> 
         <Layout>
         {/**  <LateralMenu pagina = "createadminuser" />      */}
 

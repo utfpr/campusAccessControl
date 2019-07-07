@@ -1,9 +1,12 @@
 import React, {Component} from 'react';
 import axios from 'axios'; 
-import { Table, Tag } from 'antd';
+import {Layout, Divider, Table, Tag, Row } from 'antd';
 import 'antd/dist/antd.css'; 
-import { string } from 'prop-types';
-const color = 'volcano'; 
+import { string } from 'prop-types'; 
+
+import NavBar from './navbar/navbar';
+const color = 'volcano';  
+ 
 const columns = [ 
   {
     title: 'Descrição',
@@ -104,7 +107,13 @@ componentDidUpdate() {
         console.log(error);
     })   
 }
-    render() {
-        return (<Table columns={columns} dataSource={this.state.todos} />  );   
+    render() {  
+        return (   
+          <Layout style = {{ minHeight: '100vh' }}>   
+          <NavBar/>
+          <Divider/>
+        <Row>  <Table columns={columns} dataSource={this.state.todos} /> </Row>     
+        </Layout>  
+        );
     } 
 }

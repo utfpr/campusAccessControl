@@ -36,6 +36,9 @@ class App extends Component {
             <div className="collpase nav-collapse">
               <ul className="navbar-nav mr-auto"> 
               {/* 
+              <li className="navbar-item">
+                  <Link to="/criaracesso" className="nav-link">Criar acesso</Link>
+              </li> 
                 <li className="navbar-item">
                   <Link to="/todoslist" className="nav-link">Acessos</Link>
                 </li> 
@@ -68,7 +71,7 @@ class App extends Component {
           <Route path="/useraccesslist/:id" component={UsuarioAcessoLista} />         
           <Route path="/menuuser/:id" component={MenuUser} /> 
           <Route path="/listaportaria" component={ListaPorteiro} /> 
-          <Route path="/criaracesso/:id" component={CriarAcesso} /> 
+          <Route path="/criaracesso" component={CriarAcesso} /> 
             
           
         </div>

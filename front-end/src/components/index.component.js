@@ -57,7 +57,7 @@ export default class Index extends Component {
                         var token = jwt.sign({ id: user._id }, 'secret', { expiresIn: 14400 });
                         login(token, 0, user._id);
                         const idusuario = getUserId();                       
-                        this.props.history.push('/menuuser/'+idusuario);  
+                        this.props.history.push('/useraccesslist/'+idusuario);  
                         alert("Ola "+user.user_name);
                         //console.log(this.state.loginaceito)
                         //window.location.replace("http://localhost:3000/create"); 
