@@ -38,7 +38,11 @@ const columns = [
   {
     title: 'Status',
     dataIndex: 'tags',
-    key: 'tags',  
+    key: 'tags', 
+    onFilter: (value, record) => record.tags.indexOf(value) === 0,
+    sorter: (a, b) => ("" + a.tags).localeCompare(b.tags),
+    defaultSortOrder: 'ascend',
+    sortDirections: ['ascend', 'descend'],  
     render: tags => (
       <span>
         {tags.map(tag => {
