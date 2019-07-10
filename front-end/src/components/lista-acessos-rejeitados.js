@@ -60,19 +60,10 @@ const columns = [
         })}
       </span>
     ),
-  },  
-  {
-    title: 'Ações',
-    key: 'action',
-    render:  (text, record) => (  
-      <span>  
-        <a href={"http://localhost:3000/editdirec/"+record._id}>Editar Acesso</a>
-      </span> 
-    ), 
   }, 
 ]; 
 
-export default class TodosList extends Component {
+export default class AcessosRejeitados extends Component {
   
 constructor(props) {
   super(props);
@@ -82,7 +73,7 @@ constructor(props) {
 
 componentDidMount() {  
   console.log(this.props.match.params.id)  
-  axios.get('http://localhost:4000/todos')
+  axios.get('http://localhost:4000/todos/filtro/rejeitado')
       .then(response => {
           this.setState({todos: response.data}); 
           console.log(this.state.color)
@@ -94,7 +85,7 @@ componentDidMount() {
 }
 
 componentDidUpdate() {
-    axios.get('http://localhost:4000/todos/')
+    axios.get('http://localhost:4000/todos/filtro/rejeitado')
     .then(response => {
         this.setState({todos: response.data});
     })
@@ -106,7 +97,7 @@ componentDidUpdate() {
         return ( 
           <Layout style = {{ minHeight: '100vh' }}>   
           <NavBarDirec /> 
-          <Title className = "titleForm" level={1}> Acessos Pendentes </Title>  
+          <Title className = "titleForm" level={1}> Acessos rejeitados </Title>  
         <Row> 
         <Table columns={columns} dataSource={this.state.todos} />  </Row>     
         </Layout> 

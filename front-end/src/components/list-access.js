@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 import axios from 'axios'; 
-import { Table, Tag } from 'antd';
+import { Table, Tag, Layout, Row, Divider } from 'antd';
 import 'antd/dist/antd.css'; 
-import { string } from 'prop-types';
+import { string } from 'prop-types'; 
+
+import NavBar from './navbar/navbar';
 const color = 'volcano'; 
 const columns = [ 
   {
@@ -90,6 +92,13 @@ componentDidUpdate() {
     })   
 }
     render() {
-        return (<Table columns={columns} dataSource={this.state.todos} />  );   
+        return (  
+          <Layout style = {{ minHeight: '100vh' }}>   
+          <NavBar />
+          <Divider/>
+        <Row> 
+        <Table columns={columns} dataSource={this.state.todos} />  </Row>     
+        </Layout> 
+         );   
     } 
 }

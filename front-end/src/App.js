@@ -14,7 +14,9 @@ import CreateUser from "./components/create-user.component";
 import EditUser from "./components/edit-user.component";
 import UsersList from "./components/users-list.component";
 
-import AcessoLista from "./components/list-access"; 
+import AcessoLista from "./components/list-access";  
+import AcessosAceitos from "./components/lista-acessos-aceitos"; 
+import AcessosRejeitados from "./components/lista-acessos-rejeitados";
 
 import UsuarioAcessoLista from "./components/list-access-byuser";   
 import MenuUser from "./components/menu-usuario.component";
@@ -72,7 +74,9 @@ class App extends Component {
           <Route path="/menuuser/:id" component={MenuUser} /> 
           <Route path="/listaportaria" component={ListaPorteiro} /> 
           <Route path="/criaracesso" component={CriarAcesso} /> 
-            
+          <Route path="/acessosaceitos" component={AcessosAceitos} /> 
+          <Route path="/acessosrejeitados" component={AcessosRejeitados} /> 
+             
           
         </div>
       </Router>

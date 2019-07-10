@@ -72,7 +72,7 @@ const columns = [
   }, 
 ]; 
 
-export default class TodosList extends Component {
+export default class AcessosAceitos extends Component {
   
 constructor(props) {
   super(props);
@@ -82,7 +82,7 @@ constructor(props) {
 
 componentDidMount() {  
   console.log(this.props.match.params.id)  
-  axios.get('http://localhost:4000/todos')
+  axios.get('http://localhost:4000/todos/filtro/aceito')
       .then(response => {
           this.setState({todos: response.data}); 
           console.log(this.state.color)
@@ -94,7 +94,7 @@ componentDidMount() {
 }
 
 componentDidUpdate() {
-    axios.get('http://localhost:4000/todos/')
+    axios.get('http://localhost:4000/todos/filtro/aceito')
     .then(response => {
         this.setState({todos: response.data});
     })
@@ -106,7 +106,7 @@ componentDidUpdate() {
         return ( 
           <Layout style = {{ minHeight: '100vh' }}>   
           <NavBarDirec /> 
-          <Title className = "titleForm" level={1}> Acessos Pendentes </Title>  
+          <Title className = "titleForm" level={1}> Acessos Aceitos </Title>  
         <Row> 
         <Table columns={columns} dataSource={this.state.todos} />  </Row>     
         </Layout> 

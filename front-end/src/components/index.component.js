@@ -77,10 +77,11 @@ export default class Index extends Component {
             
         this.state.direcusers.map(direcuser => {  
             if (direcuser.user_name === this.state.user_name){ 
-                if(direcuser.user_password === this.state.user_password){   
-                    this.props.history.push('/todoslist'); 
-                    alert("Seja bem vindo");  
-                      
+                if(direcuser.user_password === this.state.user_password){    
+                    var token = jwt.sign({ id: direcuser._id }, 'secret', { expiresIn: 14400 });
+                    login(token, 0, direcuser._id);                 
+                    this.props.history.push('/todoslist/');  
+                    alert("Ola "+direcuser.user_name); 
                 } 
             } 
         } 
