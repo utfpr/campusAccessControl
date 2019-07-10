@@ -29,11 +29,6 @@ const columns = [
     key: 'todo_date',
   }, 
   {
-    title: 'Prioridade',
-    dataIndex: 'todo_priority',
-    key: 'todo_priority',
-  },  
-  {
     title: 'Sala',
     dataIndex: 'todo_room',
     key: 'todo_room',
