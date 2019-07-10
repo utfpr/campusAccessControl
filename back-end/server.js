@@ -104,7 +104,7 @@ userRoutes.route('/delete/:id').delete(async function(req, res) {
 // CRUD Access
 
 todoRoutes.route('/').get( async function(req, res) {
-    Todo.find(function(err, todos) {
+    Todo.find({tags:'Solicitado'}, function(err, todos) {
         if (err) {
             console.log(err);
         } else {
