@@ -1,4 +1,4 @@
-import { Divider, Typography, Layout, Form, Row, Col, Icon, Input, Button, Tooltip } from 'antd';
+import { Divider, Typography, Layout, Form, Row, Col, Icon, Input, Button, Tooltip, DatePicker, Calendar} from 'antd';
 import React, {Component} from 'react';
 import ReactDOM from "react-dom";
 // import "antd/dist/antd.css";
@@ -6,8 +6,13 @@ import "./css-criar-acesso.css";
 import axios from 'axios';
 import { string } from 'prop-types'; 
 import { getUserId } from './services/auth';
+import moment from 'moment';
+import NavBar from './navbar/navbar'; 
 
-import NavBar from './navbar/navbar';
+
+const { MonthPicker, RangePicker } = DatePicker; 
+
+const dateFormat = 'YYYY-MM-DD';
 
 const { Title } = Typography;
 const { Content } = Layout;
@@ -202,8 +207,9 @@ class CriarAcesso extends React.Component {
                       rules: [{ required: true, message: 'Insira uma data!' }],
                     })(<Input
                         prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                        type="date"
-                    />)}
+                        type="date" 
+                    />)}  
+                    <Calendar fullscreen={false} validRange={[moment('2019-01-01', dateFormat), moment('2020-01-01', dateFormat)]} /> 
                   </Form.Item>
                 </Col>
 
