@@ -81,7 +81,8 @@ class CriarAcesso extends React.Component {
         console.log('Received values of form: ', values); 
         axios.post('http://localhost:4000/todos/add', values)
             .then(res => console.log(res.data));
-
+            const idusuario = getUserId();                       
+            this.props.history.push('/useraccesslist/'+idusuario);  
         this.setState({ 
           todo_description: '',
           todo_responsible: '',
@@ -202,7 +203,6 @@ class CriarAcesso extends React.Component {
                     })(<Input
                         prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
                         type="date"
-                        placeholder="Password"
                     />)}
                   </Form.Item>
                 </Col>
