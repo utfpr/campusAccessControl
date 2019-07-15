@@ -15,7 +15,7 @@ let DirecUser = require('./direcuser.model');
 app.use(cors());
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb+srv://balta:balta@cluster0-zflci.azure.mongodb.net/test?retryWrites=true', { useNewUrlParser: true });
+mongoose.connect('colocar a connection string aqui para conectar com banco', { useNewUrlParser: true });
 const connection = mongoose.connection;
 
 connection.once('open', function() {
