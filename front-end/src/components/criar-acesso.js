@@ -5,7 +5,7 @@ import ReactDOM from "react-dom";
 import "./css-criar-acesso.css";
 import axios from 'axios';
 import { string } from 'prop-types'; 
-import { getUserId } from './services/auth';
+import { getUserId } from '../services/auth';
 import moment from 'moment';
 import NavBar from './navbar/navbar'; 
 

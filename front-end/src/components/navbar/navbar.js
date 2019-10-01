@@ -6,7 +6,7 @@ import { Link, Redirect } from "react-router-dom";
 
 import Login from '../index.component';
 import './navbar.css';
-import { getToken, getStatus, getUserId, logout } from '../services/auth';
+import { getToken, getStatus, getUserId, logout } from '../../services/auth';
 
 
 const { Header } = Layout;
