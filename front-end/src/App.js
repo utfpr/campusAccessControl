@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
   
-import Index from "./components/index.component";
+import Index from "./Screens/Login/index";
 
 import CriarAcesso from "./components/criar-acesso";
  
@@ -30,7 +30,6 @@ class App extends Component {
     return (
       <Router>
         <div>
-          
           <Route path="/" exact component={Index} /> 
           <Route path="/todoslist" exact component={TodosList} />
           <Route path="/userlist" exact component={UsersList} />
