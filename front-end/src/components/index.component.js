@@ -1,7 +1,7 @@
 import React, {Component} from 'react'; 
 import axios from 'axios';  
 import { BrowserRouter as Router, Route, Link } from "react-router-dom"; 
-import { login, getUserId } from './services/auth';
+import { login, getUserId } from '../services/auth';
 
 const jwt = require('jsonwebtoken');
 
