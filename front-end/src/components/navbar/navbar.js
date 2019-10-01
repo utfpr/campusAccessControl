@@ -4,7 +4,6 @@ import React, {Component} from 'react';
 import { Layout, Menu, Icon, Col, Button, Dropdown, message } from 'antd';
 import { Link, Redirect } from "react-router-dom";
 
-import Login from '../index.component';
 import './navbar.css';
 import { getToken, getStatus, getUserId, logout } from '../../services/auth';
 
