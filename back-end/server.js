@@ -15,7 +15,7 @@ let DirecUser = require('./direcuser.model');
 app.use(cors());
 app.use(bodyParser.json());
 
-mongoose.connect('colocar a connection string aqui para conectar com banco', { useNewUrlParser: true });
+mongoose.connect('mongodb+srv://EnterUsername:8L8O8dJJS95JHegP@amcc-6ync8.mongodb.net/campus?retryWrites=true&w=majority', { useNewUrlParser: true });
 const connection = mongoose.connection;
 
 connection.once('open', function() {

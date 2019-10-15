@@ -12,7 +12,7 @@ import TodosList from "./components/todos-list.component";
 
 import CreateUser from "./components/create-user.component";
 import EditUser from "./components/edit-user.component";
-import UsersList from "./components/users-list.component";
+import UsersList from "./components/users-list";
 
 import AcessoLista from "./components/list-access";  
 import AcessosAceitos from "./components/lista-acessos-aceitos"; 
