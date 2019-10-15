@@ -1,68 +1,61 @@
 import React, { useState, useEffect } from "react";
 import { 
   Table, 
-  Icon 
+  Button
 } from "antd";
 
 import axios from "axios";
 
 export default function UsersList() {
   //Váriaveis do usuário
-  const [user, setUser] = useState([]);
-  const [funcionarioFilt, setFuncionarioFilt] = useState([ ]);
-  const [state, setState] = useState(true);
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
 
    useEffect(() => {
+     setLoading(true);
      axios
        .get("http://localhost:4000/users/")
        .then(response => {
          console.log(response.data);
-
-         let filteredWhithKey = response.data.map((item, key) => {
-           let returnData = item;
-           returnData.key = key;
-           console.log(returnData);
-           return returnData;
-         })
-         console.log(filteredWhithKey);
-         setFuncionarioFilt(filteredWhithKey);
-         setUser(response.data);
-         setState(true);
+         setUsers(response.data);
        })
        .catch(function(error) {
          console.log(error);
-       });
-  }, [state]);
-
-  const eu = [
-
-
-    ];
+       }).finally(() =>{
+         setLoading(false);
+       })
+  }, []);
 
   const columns = [
     {
       title: "Nome",
-      dataIndex: "nome",
+      dataIndex: "user_name",
       width: "20%",
       key: "nome"
     },
     {
       title: "Email",
-      dataIndex: "email",
+      dataIndex: "user_email",
       width: "20%",
       key: "email"
     },
     {
       title: "Senha",
-      dataIndex: "senha",
+      dataIndex: "user_password",
       width: "15%",
       key: "password"
     },
     {
       title: "Categoria",
-      dataIndex: "type",
+      dataIndex: "user_type",
       width: "10%",
       key: "type"
+    },
+    {
+      title: "Ações",
+      render: () => {
+        return <Button>Alo</Button>;
+      }
     },
   ];
 
@@ -70,7 +63,8 @@ export default function UsersList() {
     <Table
       style={{ marginTop: 20 }}
       columns={columns}
-      dataSource={funcionarioFilt}
+      rowKey={data => data._id}
+      dataSource={users}
     />
   );
 }
