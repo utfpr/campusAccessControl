@@ -1,6 +1,6 @@
 import React, {useState, useEffect, Component} from 'react';
 import { getUserId } from '../services/auth';
-import {Layout, Divider, Table, Tag, Row } from 'antd';
+import {Layout, Divider, Table, Tag, Row, Button, notification} from 'antd';
 import axios from 'axios';
 import 'antd/dist/antd.css';
 import NavBar from './navbar/navbar';
@@ -14,8 +14,9 @@ export default function UsuarioAcessoLista(){
             .get('http://localhost:4000/todos/user/'+getUserId())
             .then((res) =>{
                 setAcessos(res.data)
+                console.log(res);
         }).catch((err)=>{
-
+			console.log(err);
         });
     },[]
     );
@@ -52,14 +53,37 @@ export default function UsuarioAcessoLista(){
             key: 'justificativa',
         },  
         {
-            title: 'Status',
-            dataIndex: 'tags',
-            key: 'tags',
-        },
-        {
-            title: 'Ações',
-            key: 'action', 
-        },
+		    title: 'Status',
+		    dataIndex: 'tags',
+		    key: 'tags',  
+		    render: tags => (
+		      	<span>
+		        	{tags.map(tag => {
+		          	let color = 'volcano';
+		          	if (!tag.localeCompare("rejeitado")) {
+		            	color = 'black';
+		          	}
+		          	if (!tag.localeCompare("aceito")) {
+		            	color = 'green';
+		          	}
+		          	return (
+		            	<Tag color={color} key={tag}>
+		              	{tag.toUpperCase()}
+		              	</Tag>
+		          	);
+		        	})}
+		        </span>
+		  	),
+		},  
+		{
+		    title: 'Ações',
+		    key: 'action',
+		    render:  (text, record) => (  
+		      <span>  
+		        <a href={"http://localhost:3000/edit/"+record._id}>Editar Acesso</a>
+		      </span> 
+		    ), 
+  		}, 
     ];
 
     return (   
