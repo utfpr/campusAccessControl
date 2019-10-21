@@ -138,7 +138,7 @@ export default function listaAcessos() {
       .catch( (error) => {
           console.log(error);
           notification.open({
-            message: 'Notification Title',
+            message: 'Atenção!',
             description:
               'Algo deu errado!',
             icon: <Icon type="meh" style={{ color: '#108ee9' }} />,
@@ -150,7 +150,7 @@ export default function listaAcessos() {
 
   return (
     <div>
-      ReactDOM.render(<Table columns={columns} dataSource={data} />);
+      <Table columns={columns} dataSource={data} />
     </div>
   )
 }
