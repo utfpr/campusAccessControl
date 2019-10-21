@@ -25,6 +25,9 @@ import EditTodoDirec from "./components/direcedit-access";
 import ListaPorteiro from "./components/lista-acessos-porteiro";
 import logo from "./logo.png";
 
+
+import AcessosGerais from "./listaAcessos";  
+
 class App extends Component {
   render() {
     return (
@@ -76,6 +79,7 @@ class App extends Component {
           <Route path="/criaracesso" component={CriarAcesso} /> 
           <Route path="/acessosaceitos" component={AcessosAceitos} /> 
           <Route path="/acessosrejeitados" component={AcessosRejeitados} /> 
+          <Route path="/acessosgerais" component={AcessosGerais} /> 
              
           
         </div>
