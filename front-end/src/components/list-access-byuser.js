@@ -1,5 +1,5 @@
 import React, {useState, useEffect, Component} from 'react';
-import { getUserId } from '../components/services/auth';
+import { getUserId } from '../services/auth';
 import {Layout, Divider, Table, Tag, Row } from 'antd';
 import axios from 'axios';
 import 'antd/dist/antd.css';
