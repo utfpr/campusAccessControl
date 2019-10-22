@@ -89,7 +89,7 @@ const columns = [
   },
 ];
 
-
+/*
 //insere fake data para visualização 
 const data = [
   {
@@ -123,7 +123,7 @@ const data = [
     tags: ['rejeitado'],
   },
 ];
-
+*/
 
 
 export default function listaAcessos() {
