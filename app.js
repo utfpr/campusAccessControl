@@ -3,17 +3,15 @@ const app = express();
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const mongoose = require("mongoose");
-
-const routes = require("./routes");
-
 const PORT = 4000;
+const routes = require("./back-end/routes");
 
 app.use(cors());
 app.use(bodyParser.json());
 app.use(routes);
 
 mongoose.connect(
-  "mongodb+srv://testeApp:suasenha@cluster0-dmtgp.mongodb.net/db?retryWrites=true&w=majority",
+  "mongodb+srv://testeApp:<juci2406gui>@cluster0-dmtgp.mongodb.net/test?retryWrites=true&w=majority",
   { useNewUrlParser: true }
 );
 const connection = mongoose.connection;
