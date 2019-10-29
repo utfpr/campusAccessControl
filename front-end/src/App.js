@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
   
-import Index from "./components/index.component";
+import Index from "./Screens/Login/index";
 
 import CriarAcesso from "./components/criar-acesso";
  
@@ -25,12 +25,14 @@ import EditTodoDirec from "./components/direcedit-access";
 import ListaPorteiro from "./components/lista-acessos-porteiro";
 import logo from "./logo.png";
 
+
+import AcessosGerais from "./listaAcessos";  
+
 class App extends Component {
   render() {
     return (
       <Router>
         <div>
-          
           <Route path="/" exact component={Index} /> 
           <Route path="/todoslist" exact component={TodosList} />
           <Route path="/userlist" exact component={UsersList} />
@@ -45,6 +47,11 @@ class App extends Component {
           <Route path="/listaportaria" component={ListaPorteiro} /> 
           <Route path="/criaracesso" component={CriarAcesso} /> 
           <Route path="/acessosaceitos" component={AcessosAceitos} /> 
+
+          <Route path="/acessosrejeitados" component={AcessosRejeitados} /> 
+          <Route path="/acessosgerais" component={AcessosGerais} /> 
+             
+
           <Route path="/acessosrejeitados" component={AcessosRejeitados} />   
           
         </div>
