@@ -1,6 +1,52 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+let Acesso = new Schema({
+  descricao: {
+    type: String,
+    trim: true,
+    required: true
+  },
+  responsavel: {
+    type: String,
+    trim: true,
+    required: true
+  },
+  horario: {
+    type: String,
+    trim: true,
+    required: true
+  },
+  data: {
+    type: Date,
+    trim: true,
+    required: true
+  },
+  completo: {
+    type: Boolean,
+    default: false
+  },
+  sala: {
+    type: String,
+    trim: true,
+    required: true
+  },
+  ra: {
+    type: String,
+    required: true
+  },
+  justificativa: {
+    type: String,
+    trim: true
+  },
+  status:{
+    type: String,
+    required: true,
+    default: "Solicitado"
+  }
+});
+
+{/*
 let Access = new Schema({
   todo_description: {
     type: String,
@@ -49,5 +95,5 @@ let Access = new Schema({
     }
   ]
 });
-
-module.exports = mongoose.model("Access", Access);
+*/}
+module.exports = mongoose.model("Acesso", Acesso);

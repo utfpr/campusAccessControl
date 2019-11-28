@@ -10,8 +10,12 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(routes);
 
+const mongoUser = 'maria';
+const mongoPassword = 'vmcyaa50';
+const mongoUrl = 'cluster0-uvjor.gcp.mongodb.net';
+
 mongoose.connect(
-  "mongodb+srv://testeApp:<juci2406gui>@cluster0-dmtgp.mongodb.net/test?retryWrites=true&w=majority",
+  `mongodb+srv://${mongoPassword}:${mongoUser}@${mongoUrl}/agenda?retryWrites=true&w=majority`,
   { useNewUrlParser: true }
 );
 const connection = mongoose.connection;

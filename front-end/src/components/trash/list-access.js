@@ -1,13 +1,11 @@
 import React, {Component} from 'react';
 import axios from 'axios'; 
-import { Table, Tag, Divider, Layout, Row, Typography } from 'antd'; 
-import NavBar from './navbar/navbardirec'; 
+import { Table, Tag, Layout, Row, Divider } from 'antd';
 import 'antd/dist/antd.css'; 
-import { string } from 'prop-types';
-import NavBarDirec from './navbar/navbardirec';
-const color = 'volcano';  
-const {Title} = Typography;
+import { string } from 'prop-types'; 
 
+import NavBar from '../navbar/navbar';
+const color = 'volcano'; 
 const columns = [ 
   {
     title: 'Descrição',
@@ -30,6 +28,11 @@ const columns = [
     key: 'todo_date',
   }, 
   {
+    title: 'Prioridade',
+    dataIndex: 'todo_priority',
+    key: 'todo_priority',
+  },  
+  {
     title: 'Sala',
     dataIndex: 'todo_room',
     key: 'todo_room',
@@ -37,11 +40,7 @@ const columns = [
   {
     title: 'Status',
     dataIndex: 'tags',
-    key: 'tags', 
-    onFilter: (value, record) => record.tags.indexOf(value) === 0,
-    sorter: (a, b) => ("" + a.tags).localeCompare(b.tags),
-    defaultSortOrder: 'ascend',
-    sortDirections: ['ascend', 'descend'],  
+    key: 'tags',  
     render: tags => (
       <span>
         {tags.map(tag => {
@@ -60,10 +59,11 @@ const columns = [
         })}
       </span>
     ),
-  }, 
+  },  
 ]; 
 
-export default class AcessosRejeitados extends Component {
+export default class AcessoLista extends Component {
+ 
   
 constructor(props) {
   super(props);
@@ -71,21 +71,19 @@ constructor(props) {
  
 }
 
-componentDidMount() {  
-  console.log(this.props.match.params.id)  
-  axios.get('http://localhost:4000/todos/filtro/rejeitado')
+componentDidMount() { 
+  axios.get('http://localhost:4000/todos/')
       .then(response => {
           this.setState({todos: response.data}); 
           console.log(this.state.color)
       })
       .catch(function (error) {
           console.log(error);
-      }) 
-    console.log(this.state.todos)  
+      })
 }
 
 componentDidUpdate() {
-    axios.get('http://localhost:4000/todos/filtro/rejeitado')
+    axios.get('http://localhost:4000/todos/')
     .then(response => {
         this.setState({todos: response.data});
     })
@@ -94,13 +92,13 @@ componentDidUpdate() {
     })   
 }
     render() {
-        return ( 
+        return (  
           <Layout style = {{ minHeight: '100vh' }}>   
-          <NavBarDirec /> 
-          <Title className = "titleForm" level={1}> Acessos rejeitados </Title>  
+          <NavBar />
+          <Divider/>
         <Row> 
         <Table columns={columns} dataSource={this.state.todos} />  </Row>     
         </Layout> 
-        );   
+         );   
     } 
 }

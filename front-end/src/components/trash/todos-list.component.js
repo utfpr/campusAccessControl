@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import axios from 'axios'; 
 import { Table, Tag, Divider, Layout, Row, Typography } from 'antd'; 
-import NavBar from './navbar/navbardirec'; 
+import NavBar from '../navbar/navbardirec'; 
 import 'antd/dist/antd.css'; 
 import { string } from 'prop-types';
-import NavBarDirec from './navbar/navbardirec';
+import NavBarDirec from '../navbar/navbardirec';
 const color = 'volcano';  
 const {Title} = Typography;
 
@@ -72,7 +72,7 @@ const columns = [
   }, 
 ]; 
 
-export default class AcessosAceitos extends Component {
+export default class TodosList extends Component {
   
 constructor(props) {
   super(props);
@@ -82,7 +82,7 @@ constructor(props) {
 
 componentDidMount() {  
   console.log(this.props.match.params.id)  
-  axios.get('http://localhost:4000/todos/filtro/aceito')
+  axios.get('http://localhost:4000/todos')
       .then(response => {
           this.setState({todos: response.data}); 
           console.log(this.state.color)
@@ -94,7 +94,7 @@ componentDidMount() {
 }
 
 componentDidUpdate() {
-    axios.get('http://localhost:4000/todos/filtro/aceito')
+    axios.get('http://localhost:4000/todos/')
     .then(response => {
         this.setState({todos: response.data});
     })
@@ -106,7 +106,7 @@ componentDidUpdate() {
         return ( 
           <Layout style = {{ minHeight: '100vh' }}>   
           <NavBarDirec /> 
-          <Title className = "titleForm" level={1}> Acessos Aceitos </Title>  
+          <Title className = "titleForm" level={1}> Acessos Pendentes </Title>  
         <Row> 
         <Table columns={columns} dataSource={this.state.todos} />  </Row>     
         </Layout> 

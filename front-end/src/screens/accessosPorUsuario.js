@@ -1,9 +1,10 @@
+//OKAY <3
 import React, {useState, useEffect, Component} from 'react';
 import { getUserId } from '../services/auth';
 import {Layout, Divider, Table, Tag, Row, Button, notification} from 'antd';
 import axios from 'axios';
 import 'antd/dist/antd.css';
-import NavBar from './navbar/navbar';
+import NavBar from '../components/navbar/navbar';
 
 
 export default function UsuarioAcessoLista(){
@@ -11,7 +12,7 @@ export default function UsuarioAcessoLista(){
     
     useEffect(()=>{
         axios
-            .get('http://localhost:4000/todos/user/'+getUserId())
+            .get('http://localhost:4000/acesso/user/'+getUserId())
             .then((res) =>{
                 setAcessos(res.data)
                 console.log(res);

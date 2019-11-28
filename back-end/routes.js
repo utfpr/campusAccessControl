@@ -8,13 +8,13 @@ const routes = express.Router();
 routes.get("/usersdirec", DirecUserController.Index);
 routes.put("/usersdirec/add", DirecUserController.Insert);
 //////////////////////////////////////////////////////////////////
-routes.put("/todos/updatedirec/:id", AccessController.UpdateDirec);
-routes.put("/todos/update/:id", AccessController.Update);
-routes.post("/todos/add", AccessController.Insert);
-routes.get("/todos/user/:id", AccessController.FindId);
-routes.get("/todos/filtro/:tag", AccessController.FilterTag);
-routes.get("/todos/:id", AccessController.GetById);
-routes.get("/todos", AccessController.GetAll);
+routes.put("/acesso/updatedirec/:id", AccessController.UpdateDirec);
+routes.put("/acesso/update/:id", AccessController.Update);
+routes.post("/acesso/add", AccessController.Insert);
+routes.get("/acesso/user/:id", AccessController.FindId);
+routes.get("/acesso/filtro/:tag", AccessController.FilterTag);
+routes.get("/acesso/:id", AccessController.GetById);
+routes.get("/acesso", AccessController.GetAll);
 /////////////////////////////////////////////////////////////////////
 
 routes.delete("/users/delete/:id", UserController.Delete);

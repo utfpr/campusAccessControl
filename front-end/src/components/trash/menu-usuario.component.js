@@ -2,7 +2,7 @@ import React, {Component} from 'react';
  
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import CreateTodo from "./create-todo.component";
-import { getUserId} from '../services/auth';
+import { getUserId} from '../../services/auth';
 
 export default class MenuUser extends Component { 
  

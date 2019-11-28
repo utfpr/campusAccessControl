@@ -1,11 +1,13 @@
 import React, {Component} from 'react';
 import axios from 'axios'; 
-import { Table, Tag, Layout, Row, Divider } from 'antd';
+import { Table, Tag, Divider, Layout, Row, Typography } from 'antd'; 
+import NavBar from '../navbar/navbardirec'; 
 import 'antd/dist/antd.css'; 
-import { string } from 'prop-types'; 
+import { string } from 'prop-types';
+import NavBarDirec from '../navbar/navbardirec';
+const color = 'volcano';  
+const {Title} = Typography;
 
-import NavBar from './navbar/navbar';
-const color = 'volcano'; 
 const columns = [ 
   {
     title: 'Descrição',
@@ -28,11 +30,6 @@ const columns = [
     key: 'todo_date',
   }, 
   {
-    title: 'Prioridade',
-    dataIndex: 'todo_priority',
-    key: 'todo_priority',
-  },  
-  {
     title: 'Sala',
     dataIndex: 'todo_room',
     key: 'todo_room',
@@ -40,7 +37,11 @@ const columns = [
   {
     title: 'Status',
     dataIndex: 'tags',
-    key: 'tags',  
+    key: 'tags', 
+    onFilter: (value, record) => record.tags.indexOf(value) === 0,
+    sorter: (a, b) => ("" + a.tags).localeCompare(b.tags),
+    defaultSortOrder: 'ascend',
+    sortDirections: ['ascend', 'descend'],  
     render: tags => (
       <span>
         {tags.map(tag => {
@@ -60,10 +61,18 @@ const columns = [
       </span>
     ),
   },  
+  {
+    title: 'Ações',
+    key: 'action',
+    render:  (text, record) => (  
+      <span>  
+        <a href={"http://localhost:3000/editdirec/"+record._id}>Editar Acesso</a>
+      </span> 
+    ), 
+  }, 
 ]; 
 
-export default class AcessoLista extends Component {
- 
+export default class AcessosAceitos extends Component {
   
 constructor(props) {
   super(props);
@@ -71,19 +80,21 @@ constructor(props) {
  
 }
 
-componentDidMount() { 
-  axios.get('http://localhost:4000/todos/')
+componentDidMount() {  
+  console.log(this.props.match.params.id)  
+  axios.get('http://localhost:4000/todos/filtro/aceito')
       .then(response => {
           this.setState({todos: response.data}); 
           console.log(this.state.color)
       })
       .catch(function (error) {
           console.log(error);
-      })
+      }) 
+    console.log(this.state.todos)  
 }
 
 componentDidUpdate() {
-    axios.get('http://localhost:4000/todos/')
+    axios.get('http://localhost:4000/todos/filtro/aceito')
     .then(response => {
         this.setState({todos: response.data});
     })
@@ -92,13 +103,13 @@ componentDidUpdate() {
     })   
 }
     render() {
-        return (  
+        return ( 
           <Layout style = {{ minHeight: '100vh' }}>   
-          <NavBar />
-          <Divider/>
+          <NavBarDirec /> 
+          <Title className = "titleForm" level={1}> Acessos Aceitos </Title>  
         <Row> 
         <Table columns={columns} dataSource={this.state.todos} />  </Row>     
         </Layout> 
-         );   
+        );   
     } 
 }
