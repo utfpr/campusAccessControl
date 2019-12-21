@@ -10,9 +10,9 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(routes);
 
-const mongoUser = 'maria';
-const mongoPassword = 'vmcyaa50';
-const mongoUrl = 'cluster0-uvjor.gcp.mongodb.net';
+const mongoUser = '';
+const mongoPassword = '';
+const mongoUrl = '';
 
 mongoose.connect(
   `mongodb+srv://${mongoPassword}:${mongoUser}@${mongoUrl}/agenda?retryWrites=true&w=majority`,
