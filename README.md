@@ -11,3 +11,6 @@ JavaScript is the programing language used in the whole system.
 
 ## MongoDB
 Online Database for system.
+
+## Configurações
+Antes de executar o projeto ache o arquivo env.default.js, crie uma cópia do arquivo, renomeie a cópia para env.js, e o renomeie de acordo com seu nome de usuário e senha do banco de dados.
