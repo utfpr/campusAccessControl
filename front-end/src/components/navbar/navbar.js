@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Layout, Menu, Col, Row, message, Dropdown, Icon, Button, BackTop } from 'antd';
 import { Link, Redirect } from 'react-router-dom';
-import { Layout, Col, Row, message, Icon, Button } from 'antd';
+import { logout } from '../../services/auth';
 import './navbar.css';
 
 const logo = require('../../images/logo.png');
-const { Header } = Layout;
 
-export default function Navbar() {
+const { Header } = Layout;
+const { Content } = Layout;
+
+export default function NavBar(props) {
   const [nav, setNav] = useState('');
 
   const signout = () => {
@@ -18,42 +21,44 @@ export default function Navbar() {
     }, 1500);
   }
 
-  if (nav){
-    return (<Redirect to={nav} />);
-  }else{
-    return (
-      <Header>
-        <Row 
-          style = {{ 
-            padding: '0 25px' 
-          }}
-        >
-          <Col 
-            sm={{ 
-              span: 10, 
-              offset: 2 
-            }} 
-            xs={{ 
-              span: 12, 
-              offset: 0 
-            }}
-          >
-            <div>
-              <Link to="/">
-                <img src={logo} alt="Logo UTFPR" />
-                {/* style={{ marginLeft: '280px', height: '63px' }} */}
-              </Link>
-            </div>
+  function LogoutButton() {
+    if (!(props.btn === '0')) {
+      return (
+        <div>
+          <Col span={12}>
+            <Button onClick={signout} size="large" style={{ float: "right", marginTop: "40px" }}>
+              <Icon type="logout" theme="outlined" />Sair
+          </Button>
           </Col>
+        </div>
+      )
+    }else{
+      return null;
+    }
+  }
 
-          <Col> 
-            <Button 
-              icon = "poweroff">
-                Sair
-            </Button>
-          </Col>
-        </Row>
-      </Header>
-    )
+  if (nav) {
+    return (<Redirect to={nav} />);
+  } else {
+    return (
+      <Layout style={{ minHeight: '100vh' }}>
+        <Header style={{ backgroundColor: '#e3e3e3', height: "120px", padding: "10px" }}>
+          <Row style={{ padding: '0 25px' }} span={4}>
+            <Col span={12}>
+              <div style={{ float: "left", height: "5%" }}>
+                <img src={logo} alt="Logo UTFPR" style={{ width: "40%" }} />
+              </div>
+            </Col>
+
+            <LogoutButton/>
+          </Row>
+        </Header>
+        <Layout>
+          <Content style={{ padding: 24, paddingTop: 50, background: '#FFF', minHeight: 280 }}>
+            {props.children}
+          </Content>
+        </Layout>
+      </Layout>
+    );
   }
 }

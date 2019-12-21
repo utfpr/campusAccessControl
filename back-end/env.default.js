@@ -1,5 +1,7 @@
 module.exports = {
     mongoUser: '',
     mongoPassword: '',
-    mongoUrl: ''
+    mongoUrl: '',
+    usernameAPI: '',
+    passwordAPI: ''
 } 
